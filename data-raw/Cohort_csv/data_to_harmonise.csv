@@ -1,0 +1,21 @@
+ID,Age,Sex,Height,Weight,Smoke History,Chest Pain Character,Dyspnea
+B001,32,Female,170,63,non-smoker,atypical,no
+B002,52,Female,167,71,current smoker,no chest pain,yes
+B003,80,Male,184,77,non-smoker,atypical,yes
+B004,70,Male,160,83,past smoker,no chest pain,yes
+B005,70,Female,155,61,current smoker,typical,no
+B006,53,Female,168,59,non-smoker,nonanginal,yes
+B007,86,Male,171,82,non-smoker,no chest pain,no
+B008,28,Female,153,80,past smoker,no chest pain,no
+B009,34,Female,174,69,non-smoker,nonanginal,yes
+B010,66,Female,182,74,current smoker,no chest pain,no
+B011,47,Male,180,73,past smoker,atypical,no
+B012,29,Female,166,64,non-smoker,nonanginal,yes
+B013,51,Male,188,80,current smoker,nonanginal,no
+B014,23,Female,160,55,non-smoker,no chest pain,no
+B015,75,Male,173,70,past smoker,typical,yes
+B016,41,Male,175,85,non-smoker,nonanginal,no
+B017,42,Female,169,69,non-smoker,typical,no
+B018,56,Male,167,70,past smoker,no chest pain,no
+B019,45,Female,178,93,non-smoker,no chest pain,no
+B020,50,Female,174,72,current smoker,no chest pain,yes

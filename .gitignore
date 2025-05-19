@@ -1,0 +1,12 @@
+.Rproj.user
+.Rhistory
+.Rprofile
+.Renviron
+.Rdata
+.Ruserdata
+
+/.quarto/
+/renv/
+.httr-oauth
+.DS_Store
+.quarto
