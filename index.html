@@ -192,6 +192,22 @@
       margin-right: 0; 
     }
   </style>
+  <script src="index_files/libs/core-js-2.5.3/shim.min.js"></script>
+
+  <script src="index_files/libs/react-18.2.0/react.min.js"></script>
+
+  <script src="index_files/libs/react-18.2.0/react-dom.min.js"></script>
+
+  <script src="index_files/libs/reactwidget-2.0.0/react-tools.js"></script>
+
+  <link href="index_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+  <script src="index_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+  <link href="index_files/libs/reactable-0.4.4/reactable.css" rel="stylesheet">
+
+  <script src="index_files/libs/reactable-binding-0.4.4/reactable.js"></script>
+
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -452,6 +468,217 @@ The `expect_row_count_match()` validation failed beyond the absolute threshold l
 <span id="cb20-11"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
+</section>
+<section id="variable-mapping" class="slide level2">
+<h2>Variable Mapping</h2>
+
+<img data-src="images/variable_mapping_workflow.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Variable Mapping Reporting Workflow. Starting with introducing the mapping procedure, writing code to do mapping ans validation, showing that the code works, clean up data for merging."></section>
+<section id="variable-mapping-1" class="slide level2">
+<h2>Variable Mapping</h2>
+<p>Let take this data set as an example.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>cohort_csv_data <span class="ot">&lt;-</span> vroom<span class="sc">::</span><span class="fu">vroom</span>(</span>
+<span id="cb21-2"><a href=""></a>  <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>,</span>
+<span id="cb21-3"><a href=""></a>                    <span class="st">"Cohort_csv"</span>,</span>
+<span id="cb21-4"><a href=""></a>                    <span class="st">"data_to_harmonise.csv"</span>),</span>
+<span id="cb21-5"><a href=""></a>  <span class="at">delim =</span> <span class="st">","</span>,</span>
+<span id="cb21-6"><a href=""></a>  <span class="at">col_select =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>,</span>
+<span id="cb21-7"><a href=""></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb21-8"><a href=""></a>  <span class="at">col_types =</span> <span class="fu">list</span>(</span>
+<span id="cb21-9"><a href=""></a>    <span class="at">ID =</span> vroom<span class="sc">::</span><span class="fu">col_character</span>(),</span>
+<span id="cb21-10"><a href=""></a>    <span class="at">Age =</span> vroom<span class="sc">::</span><span class="fu">col_integer</span>(),</span>
+<span id="cb21-11"><a href=""></a>    <span class="at">Sex =</span> vroom<span class="sc">::</span><span class="fu">col_character</span>(),</span>
+<span id="cb21-12"><a href=""></a>    <span class="at">Height =</span> vroom<span class="sc">::</span><span class="fu">col_double</span>(),</span>
+<span id="cb21-13"><a href=""></a>    <span class="at">Weight =</span> vroom<span class="sc">::</span><span class="fu">col_double</span>(),</span>
+<span id="cb21-14"><a href=""></a>    <span class="st">`</span><span class="at">Smoke History</span><span class="st">`</span> <span class="ot">=</span> vroom<span class="sc">::</span><span class="fu">col_character</span>(),</span>
+<span id="cb21-15"><a href=""></a>    <span class="st">`</span><span class="at">Chest Pain Character</span><span class="st">`</span> <span class="ot">=</span> vroom<span class="sc">::</span><span class="fu">col_character</span>(),</span>
+<span id="cb21-16"><a href=""></a>    <span class="at">Dyspnea =</span> vroom<span class="sc">::</span><span class="fu">col_character</span>()</span>
+<span id="cb21-17"><a href=""></a>    )</span>
+<span id="cb21-18"><a href=""></a>  ) <span class="sc">|&gt;</span>  </span>
+<span id="cb21-19"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">cohort_unique_id =</span> <span class="st">"ID"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb21-20"><a href=""></a>  <span class="co"># Remove rows when the ID value is NA</span></span>
+<span id="cb21-21"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(.data[[<span class="st">"cohort_unique_id"</span>]])) <span class="sc">|&gt;</span></span>
+<span id="cb21-22"><a href=""></a>  <span class="co"># Remove white spaces in column names</span></span>
+<span id="cb21-23"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">rename_all</span>(stringr<span class="sc">::</span>str_trim) <span class="sc">|&gt;</span> </span>
+<span id="cb21-24"><a href=""></a>  <span class="co"># Check if cohort id is unique</span></span>
+<span id="cb21-25"><a href=""></a>  pointblank<span class="sc">::</span><span class="fu">rows_distinct</span>(</span>
+<span id="cb21-26"><a href=""></a>    <span class="at">columns =</span> <span class="st">"cohort_unique_id"</span>,</span>
+<span id="cb21-27"><a href=""></a>  )</span>
+<span id="cb21-28"><a href=""></a></span>
+<span id="cb21-29"><a href=""></a>cohort_csv_data <span class="sc">|&gt;</span> </span>
+<span id="cb21-30"><a href=""></a>  vroom<span class="sc">::</span><span class="fu">problems</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb21-31"><a href=""></a>  pointblank<span class="sc">::</span><span class="fu">expect_row_count_match</span>(<span class="at">count =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div class="reactable html-widget html-fill-item" id="reactable-3f6847cf734a" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="reactable-3f6847cf734a">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"cohort_unique_id":["B001","B002","B003","B004","B005","B006","B007","B008","B009","B010","B011","B012","B013","B014","B015","B016","B017","B018","B019","B020"],"Age":[32,52,80,70,70,53,86,28,34,66,47,29,51,23,75,41,42,56,45,50],"Sex":["Female","Female","Male","Male","Female","Female","Male","Female","Female","Female","Male","Female","Male","Female","Male","Male","Female","Male","Female","Female"],"Height":[170,167,184,160,155,168,171,153,174,182,180,166,188,160,173,175,169,167,178,174],"Weight":[63,71,77,83,61,59,82,80,69,74,73,64,80,55,70,85,69,70,93,72],"Smoke History":["non-smoker","current smoker","non-smoker","past smoker","current smoker","non-smoker","non-smoker","past smoker","non-smoker","current smoker","past smoker","non-smoker","current smoker","non-smoker","past smoker","non-smoker","","past smoker","non-smoker","current smoker"],"Chest Pain Character":["atypical","no chest pain","atypical","no chest pain","typical","nonanginal","no chest pain","no chest pain","nonanginal","no chest pain","atypical","nonanginal","nonanginal","no chest pain","typical","nonanginal","typical","no chest pain","no chest pain","no chest pain"],"Dyspnea":["no","yes","yes","yes","no","yes","no","no","yes","no","no","yes","no","no","yes","no","no","no","no","yes"]},"columns":[{"id":"cohort_unique_id","name":"cohort_unique_id","type":"character"},{"id":"Age","name":"Age","type":"numeric"},{"id":"Sex","name":"Sex","type":"factor","filterMethod":"(rows, columnId, filterValue) => {\n        return rows.filter(row => row.values[columnId] === filterValue)\n      }","filterInput":{"name":"select","attribs":{"aria-label":"Filter Sex","style":{"width":"100%","height":"100%"},"onChange":"function(_e){(function(event){\n          const value = event.target.value\n          Reactable.setFilter('reactable-3f6847cf734a', 'Sex', value === '__ALL__' ? undefined : value)}).apply(event.target,[_e])}"},"children":[{"name":"option","attribs":{"value":"__ALL__"},"children":["All"]},{"name":"option","attribs":{},"children":["Male"]},{"name":"option","attribs":{},"children":["Female"]}]}},{"id":"Height","name":"Height","type":"numeric"},{"id":"Weight","name":"Weight","type":"numeric"},{"id":"Smoke History","name":"Smoke History","type":"factor","filterMethod":"(rows, columnId, filterValue) => {\n        return rows.filter(row => row.values[columnId] === filterValue)\n      }","filterInput":{"name":"select","attribs":{"aria-label":"Filter Smoke History","style":{"width":"100%","height":"100%"},"onChange":"function(_e){(function(event){\n          const value = event.target.value\n          Reactable.setFilter('reactable-3f6847cf734a', 'Smoke History', value === '__ALL__' ? undefined : value)}).apply(event.target,[_e])}"},"children":[{"name":"option","attribs":{"value":"__ALL__"},"children":["All"]},{"name":"option","attribs":{},"children":["non-smoker"]},{"name":"option","attribs":{},"children":["past smoker"]},{"name":"option","attribs":{},"children":["current smoker"]},{"name":"option","attribs":{},"children":[""]}]}},{"id":"Chest Pain Character","name":"Chest Pain Character","type":"factor","filterMethod":"(rows, columnId, filterValue) => {\n        return rows.filter(row => row.values[columnId] === filterValue)\n      }","filterInput":{"name":"select","attribs":{"aria-label":"Filter Chest Pain Character","style":{"width":"100%","height":"100%"},"onChange":"function(_e){(function(event){\n          const value = event.target.value\n          Reactable.setFilter('reactable-3f6847cf734a', 'Chest Pain Character', value === '__ALL__' ? undefined : value)}).apply(event.target,[_e])}"},"children":[{"name":"option","attribs":{"value":"__ALL__"},"children":["All"]},{"name":"option","attribs":{},"children":["no chest pain"]},{"name":"option","attribs":{},"children":["nonanginal"]},{"name":"option","attribs":{},"children":["atypical"]},{"name":"option","attribs":{},"children":["typical"]}]}},{"id":"Dyspnea","name":"Dyspnea","type":"factor","filterMethod":"(rows, columnId, filterValue) => {\n        return rows.filter(row => row.values[columnId] === filterValue)\n      }","filterInput":{"name":"select","attribs":{"aria-label":"Filter Dyspnea","style":{"width":"100%","height":"100%"},"onChange":"function(_e){(function(event){\n          const value = event.target.value\n          Reactable.setFilter('reactable-3f6847cf734a', 'Dyspnea', value === '__ALL__' ? undefined : value)}).apply(event.target,[_e])}"},"children":[{"name":"option","attribs":{"value":"__ALL__"},"children":["All"]},{"name":"option","attribs":{},"children":["no"]},{"name":"option","attribs":{},"children":["yes"]}]}}],"filterable":true,"defaultPageSize":5,"paginationType":"jump","style":{"fontSize":"1rem"},"elementId":"reactable-3f6847cf734a","dataKey":"63077d38016e450db212c776fc369813"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.2.filterMethod","tag.attribs.columns.2.filterInput.attribs.onChange","tag.attribs.columns.5.filterMethod","tag.attribs.columns.5.filterInput.attribs.onChange","tag.attribs.columns.6.filterMethod","tag.attribs.columns.6.filterInput.attribs.onChange","tag.attribs.columns.7.filterMethod","tag.attribs.columns.7.filterInput.attribs.onChange"],"jsHooks":[]}</script>
+<button onclick="Reactable.downloadDataCSV('reactable-3f6847cf734a', 'download.csv')">
+<svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"></path></svg>
+Download as CSV
+</button>
+</div>
+</div>
+</div></div>
+</section>
+<section id="variable-mapping-2" class="slide level2">
+<h2>Variable Mapping</h2>
+<p>Let the reader know how the collaborator data <code>Smoke History</code> is going to be mapped.</p>
+
+<img data-src="images/mapping_procedure.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Documentation indicating how the collaborator's data Smoke History is going to be mapped or harmonised in Quarto code and output."></section>
+<section id="variable-mapping-3" class="slide level2">
+<h2>Variable Mapping</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/code_to_map.png" class="quarto-figure quarto-figure-center" style="width:30.0%" alt="Code to do mapping."></p>
+</figure>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="|2,3|5-14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a>smoking_data <span class="ot">&lt;-</span> cohort_csv_data <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">c</span>(<span class="st">"cohort_unique_id"</span>, </span>
+<span id="cb22-3"><a href=""></a>                  <span class="st">"Smoke History"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb22-4"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb22-5"><a href=""></a>    <span class="at">smoke_current =</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb22-6"><a href=""></a>      <span class="fu">is.na</span>(.data[[<span class="st">"Smoke History"</span>]]) <span class="sc">~</span> <span class="st">"-1"</span>,</span>
+<span id="cb22-7"><a href=""></a>      .data[[<span class="st">"Smoke History"</span>]] <span class="sc">==</span> <span class="st">"non-smoker"</span> <span class="sc">~</span> <span class="st">"0"</span>,</span>
+<span id="cb22-8"><a href=""></a>      .data[[<span class="st">"Smoke History"</span>]] <span class="sc">==</span> <span class="st">"past smoker"</span> <span class="sc">~</span> <span class="st">"0"</span>,</span>
+<span id="cb22-9"><a href=""></a>      .data[[<span class="st">"Smoke History"</span>]] <span class="sc">==</span> <span class="st">"current smoker"</span> <span class="sc">~</span> <span class="st">"1"</span>,</span>
+<span id="cb22-10"><a href=""></a>      <span class="at">.default =</span> <span class="cn">NA_character_</span></span>
+<span id="cb22-11"><a href=""></a>    ),</span>
+<span id="cb22-12"><a href=""></a>    <span class="at">smoke_current =</span> forcats<span class="sc">::</span><span class="fu">fct_relevel</span>(</span>
+<span id="cb22-13"><a href=""></a>      .data[[<span class="st">"smoke_current"</span>]],</span>
+<span id="cb22-14"><a href=""></a>      <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>)), </span>
+<span id="cb22-15"><a href=""></a>    <span class="at">smoke_past =</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb22-16"><a href=""></a>      <span class="fu">is.na</span>(.data[[<span class="st">"Smoke History"</span>]]) <span class="sc">~</span> <span class="st">"-1"</span>,</span>
+<span id="cb22-17"><a href=""></a>      .data[[<span class="st">"Smoke History"</span>]] <span class="sc">==</span> <span class="st">"non-smoker"</span> <span class="sc">~</span> <span class="st">"0"</span>,</span>
+<span id="cb22-18"><a href=""></a>      .data[[<span class="st">"Smoke History"</span>]] <span class="sc">==</span> <span class="st">"past smoker"</span> <span class="sc">~</span> <span class="st">"1"</span>,</span>
+<span id="cb22-19"><a href=""></a>      .data[[<span class="st">"Smoke History"</span>]] <span class="sc">==</span> <span class="st">"current smoker"</span> <span class="sc">~</span> <span class="st">"0"</span>,</span>
+<span id="cb22-20"><a href=""></a>      <span class="at">.default =</span> <span class="cn">NA_character_</span></span>
+<span id="cb22-21"><a href=""></a>    ),</span>
+<span id="cb22-22"><a href=""></a>    <span class="at">smoke_past =</span> forcats<span class="sc">::</span><span class="fu">fct_relevel</span>(</span>
+<span id="cb22-23"><a href=""></a>      .data[[<span class="st">"smoke_past"</span>]],</span>
+<span id="cb22-24"><a href=""></a>      <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>)),</span>
+<span id="cb22-25"><a href=""></a>    <span class="st">`</span><span class="at">Smoke History</span><span class="st">`</span> <span class="ot">=</span> forcats<span class="sc">::</span><span class="fu">fct</span>(</span>
+<span id="cb22-26"><a href=""></a>      .data[[<span class="st">"Smoke History"</span>]]</span>
+<span id="cb22-27"><a href=""></a>    )</span>
+<span id="cb22-28"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/smoking_history_documentation.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Documentation of harmonisation of smoking history."></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="variable-mapping-4" class="slide level2">
+<h2>Variable Mapping</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/code_to_validate.png" class="quarto-figure quarto-figure-center" style="width:30.0%" alt="Code to do validation."></p>
+</figure>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>smoking_data <span class="ot">&lt;-</span> smoking_data <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href=""></a>  pointblank<span class="sc">::</span><span class="fu">col_vals_in_set</span>(</span>
+<span id="cb23-3"><a href=""></a>    <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"smoke_current"</span>, <span class="st">"smoke_past"</span>),</span>
+<span id="cb23-4"><a href=""></a>    <span class="at">set =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>, <span class="st">"-1"</span>)</span>
+<span id="cb23-5"><a href=""></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb23-6"><a href=""></a>  pointblank<span class="sc">::</span><span class="fu">col_vals_expr</span>(</span>
+<span id="cb23-7"><a href=""></a>    <span class="at">expr =</span> pointblank<span class="sc">::</span><span class="fu">expr</span>(</span>
+<span id="cb23-8"><a href=""></a>      (.data[[<span class="st">"smoke_current"</span>]] <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">&amp;</span> .data[[<span class="st">"smoke_past"</span>]] <span class="sc">==</span> <span class="st">"0"</span>) <span class="sc">|</span></span>
+<span id="cb23-9"><a href=""></a>      (.data[[<span class="st">"smoke_current"</span>]] <span class="sc">==</span> <span class="st">"-1"</span> <span class="sc">&amp;</span> .data[[<span class="st">"smoke_past"</span>]] <span class="sc">==</span> <span class="sc">-</span><span class="st">"1"</span>) <span class="sc">|</span></span>
+<span id="cb23-10"><a href=""></a>      (.data[[<span class="st">"smoke_current"</span>]] <span class="sc">==</span> <span class="st">"0"</span> <span class="sc">&amp;</span> .data[[<span class="st">"smoke_past"</span>]] <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>))</span>
+<span id="cb23-11"><a href=""></a>    )</span>
+<span id="cb23-12"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/smoking_history_validation.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Documentation of harmonisation of smoking history."></p>
+</figure>
+</div>
+</div></div>
+<p>Reference: <a href="https://github.com/rstudio/pointblank/issues/578" class="uri">https://github.com/rstudio/pointblank/issues/578</a></p>
+</section>
+<section id="variable-mapping-5" class="slide level2">
+<h2>Variable Mapping</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/example_works.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Show examples that the code works."> <img data-src="images/print_reactable.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Code to print the reactable in html file."></p>
+</div><div class="column" style="width:50%;">
+<div class="center-h">
+<p><span style="font-size: 80%;"><strong>Html Output</strong></span></p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="reactable html-widget html-fill-item" id="reactable-3f68602c7fd6" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="reactable-3f68602c7fd6">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"cohort_unique_id":["B001","B002","B003","B004","B005","B006","B007","B008","B009","B010","B011","B012","B013","B014","B015","B016","B017","B018","B019","B020"],"Smoke History":["non-smoker","current smoker","non-smoker","past smoker","current smoker","non-smoker","non-smoker","past smoker","non-smoker","current smoker","past smoker","non-smoker","current smoker","non-smoker","past smoker","non-smoker","","past smoker","non-smoker","current smoker"],"smoke_current":["0","1","0","0","1","0","0","0","0","1","0","0","1","0","0","0","-1","0","0","1"],"smoke_past":["0","0","0","1","0","0","0","1","0","0","1","0","0","0","1","0","-1","1","0","0"]},"columns":[{"id":"cohort_unique_id","name":"cohort_unique_id","type":"character"},{"id":"Smoke History","name":"Smoke History","type":"factor","filterMethod":"(rows, columnId, filterValue) => {\n        return rows.filter(row => row.values[columnId] === filterValue)\n      }","filterInput":{"name":"select","attribs":{"aria-label":"Filter Smoke History","style":{"width":"100%","height":"100%"},"onChange":"function(_e){(function(event){\n          const value = event.target.value\n          Reactable.setFilter('reactable-3f68602c7fd6', 'Smoke History', value === '__ALL__' ? undefined : value)}).apply(event.target,[_e])}"},"children":[{"name":"option","attribs":{"value":"__ALL__"},"children":["All"]},{"name":"option","attribs":{},"children":["non-smoker"]},{"name":"option","attribs":{},"children":["current smoker"]},{"name":"option","attribs":{},"children":["past smoker"]},{"name":"option","attribs":{},"children":[""]}]}},{"id":"smoke_current","name":"smoke_current","type":"factor","filterMethod":"(rows, columnId, filterValue) => {\n        return rows.filter(row => row.values[columnId] === filterValue)\n      }","filterInput":{"name":"select","attribs":{"aria-label":"Filter smoke_current","style":{"width":"100%","height":"100%"},"onChange":"function(_e){(function(event){\n          const value = event.target.value\n          Reactable.setFilter('reactable-3f68602c7fd6', 'smoke_current', value === '__ALL__' ? undefined : value)}).apply(event.target,[_e])}"},"children":[{"name":"option","attribs":{"value":"__ALL__"},"children":["All"]},{"name":"option","attribs":{},"children":["0"]},{"name":"option","attribs":{},"children":["1"]},{"name":"option","attribs":{},"children":["-1"]}]}},{"id":"smoke_past","name":"smoke_past","type":"factor","filterMethod":"(rows, columnId, filterValue) => {\n        return rows.filter(row => row.values[columnId] === filterValue)\n      }","filterInput":{"name":"select","attribs":{"aria-label":"Filter smoke_past","style":{"width":"100%","height":"100%"},"onChange":"function(_e){(function(event){\n          const value = event.target.value\n          Reactable.setFilter('reactable-3f68602c7fd6', 'smoke_past', value === '__ALL__' ? undefined : value)}).apply(event.target,[_e])}"},"children":[{"name":"option","attribs":{"value":"__ALL__"},"children":["All"]},{"name":"option","attribs":{},"children":["0"]},{"name":"option","attribs":{},"children":["1"]},{"name":"option","attribs":{},"children":["-1"]}]}}],"filterable":true,"defaultPageSize":5,"paginationType":"jump","style":{"fontSize":"1rem"},"elementId":"reactable-3f68602c7fd6","dataKey":"46db817e15609d16513dbacd592a71c3"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.1.filterMethod","tag.attribs.columns.1.filterInput.attribs.onChange","tag.attribs.columns.2.filterMethod","tag.attribs.columns.2.filterInput.attribs.onChange","tag.attribs.columns.3.filterMethod","tag.attribs.columns.3.filterInput.attribs.onChange"],"jsHooks":[]}</script>
+<button onclick="Reactable.downloadDataCSV('reactable-3f68602c7fd6', 'download.csv')">
+<svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"></path></svg>
+Download as CSV
+</button>
+</div>
+</div>
+</div></div>
+</section>
+<section id="variable-mapping-6" class="slide level2">
+<h2>Variable Mapping</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/example_works.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Show examples that the code works."> <img data-src="images/print_code_pdf.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Code to print the table in pdf file."></p>
+</div><div class="column" style="width:50%;">
+<div class="center-h">
+<p><span style="font-size: 80%;"><strong>Pdf Output</strong></span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/print_pdf.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Output code in pdf file."></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/print_pdf_2.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Output table in pdf file."></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="variable-mapping-7" class="slide level2">
+<h2>Variable Mapping</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/clean_for_merging.png" class="quarto-figure quarto-figure-center" style="width:50.0%" alt="Clean for merging."></p>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a>smoking_data <span class="ot">&lt;-</span> smoking_data <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">"Smoke History"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div class="reactable html-widget html-fill-item" id="reactable-3f6830dc3dc2" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="reactable-3f6830dc3dc2">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"cohort_unique_id":["B001","B002","B003","B004","B005","B006","B007","B008","B009","B010","B011","B012","B013","B014","B015","B016","B017","B018","B019","B020"],"smoke_current":["0","1","0","0","1","0","0","0","0","1","0","0","1","0","0","0","-1","0","0","1"],"smoke_past":["0","0","0","1","0","0","0","1","0","0","1","0","0","0","1","0","-1","1","0","0"]},"columns":[{"id":"cohort_unique_id","name":"cohort_unique_id","type":"character"},{"id":"smoke_current","name":"smoke_current","type":"factor","filterMethod":"(rows, columnId, filterValue) => {\n        return rows.filter(row => row.values[columnId] === filterValue)\n      }","filterInput":{"name":"select","attribs":{"aria-label":"Filter smoke_current","style":{"width":"100%","height":"100%"},"onChange":"function(_e){(function(event){\n          const value = event.target.value\n          Reactable.setFilter('reactable-3f6830dc3dc2', 'smoke_current', value === '__ALL__' ? undefined : value)}).apply(event.target,[_e])}"},"children":[{"name":"option","attribs":{"value":"__ALL__"},"children":["All"]},{"name":"option","attribs":{},"children":["0"]},{"name":"option","attribs":{},"children":["1"]},{"name":"option","attribs":{},"children":["-1"]}]}},{"id":"smoke_past","name":"smoke_past","type":"factor","filterMethod":"(rows, columnId, filterValue) => {\n        return rows.filter(row => row.values[columnId] === filterValue)\n      }","filterInput":{"name":"select","attribs":{"aria-label":"Filter smoke_past","style":{"width":"100%","height":"100%"},"onChange":"function(_e){(function(event){\n          const value = event.target.value\n          Reactable.setFilter('reactable-3f6830dc3dc2', 'smoke_past', value === '__ALL__' ? undefined : value)}).apply(event.target,[_e])}"},"children":[{"name":"option","attribs":{"value":"__ALL__"},"children":["All"]},{"name":"option","attribs":{},"children":["0"]},{"name":"option","attribs":{},"children":["1"]},{"name":"option","attribs":{},"children":["-1"]}]}}],"filterable":true,"defaultPageSize":5,"paginationType":"jump","style":{"fontSize":"1rem"},"elementId":"reactable-3f6830dc3dc2","dataKey":"e0d810e90a9750b142a50a294a187121"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.1.filterMethod","tag.attribs.columns.1.filterInput.attribs.onChange","tag.attribs.columns.2.filterMethod","tag.attribs.columns.2.filterInput.attribs.onChange"],"jsHooks":[]}</script>
+<button onclick="Reactable.downloadDataCSV('reactable-3f6830dc3dc2', 'download.csv')">
+<svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"></path></svg>
+Download as CSV
+</button>
+</div>
+</div>
+</div></div>
+</section>
+<section id="merging-harmonised-data" class="slide level2">
+<h2>Merging Harmonised Data</h2>
+<p>We have completed harmonising a batch of clinical data. How can we merge them without issues of missing rows or additional columns.</p>
 
 </section>
     </div>

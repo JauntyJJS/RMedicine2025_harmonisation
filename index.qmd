@@ -67,12 +67,17 @@ out_type <- knitr::opts_chunk$get("rmarkdown.pandoc.to")
 #| include: false
 #| echo: false
 
+library(dplyr)
 library(magrittr)
+library(forcats)
 library(here)
 library(testthat)
 library(readxl)
 library(vroom)
 library(pointblank)
+library(reactable)
+
+source("R/factor-reactable.R")
 
 ```
 
@@ -362,3 +367,287 @@ testthat::expect_no_condition() |>
 :::
 
 ::::
+
+## Variable Mapping
+
+![](images/variable_mapping_workflow.png){fig-alt="Variable Mapping Reporting Workflow. Starting with introducing the mapping procedure, writing code to do mapping ans validation, showing that the code works, clean up data for merging." fig-align="center" width="100%"}
+
+## Variable Mapping
+
+Let take this data set as an example.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: read csv data
+#| echo: true
+
+cohort_csv_data <- vroom::vroom(
+  file = here::here("data-raw",
+                    "Cohort_csv",
+                    "data_to_harmonise.csv"),
+  delim = ",",
+  col_select = 1:8,
+  show_col_types = FALSE,
+  col_types = list(
+    ID = vroom::col_character(),
+    Age = vroom::col_integer(),
+    Sex = vroom::col_character(),
+    Height = vroom::col_double(),
+    Weight = vroom::col_double(),
+    `Smoke History` = vroom::col_character(),
+    `Chest Pain Character` = vroom::col_character(),
+    Dyspnea = vroom::col_character()
+    )
+  ) |>  
+  dplyr::rename(cohort_unique_id = "ID") |>
+  # Remove rows when the ID value is NA
+  dplyr::filter(!is.na(.data[["cohort_unique_id"]])) |>
+  # Remove white spaces in column names
+  dplyr::rename_all(stringr::str_trim) |> 
+  # Check if cohort id is unique
+  pointblank::rows_distinct(
+    columns = "cohort_unique_id",
+  )
+
+cohort_csv_data |> 
+  vroom::problems() |> 
+  pointblank::expect_row_count_match(count = 0)
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: print csv data
+#| echo: false
+ 
+cohort_csv_data |> 
+  dplyr::mutate(
+    Sex = forcats::fct_relevel(.data[["Sex"]], c("Male", "Female")),
+    `Smoke History` = forcats::fct_relevel(
+      .data[["Smoke History"]], 
+      c("non-smoker", "past smoker", "current smoker")
+    ),
+    `Chest Pain Character` = forcats::fct_relevel(
+      .data[["Chest Pain Character"]], 
+      c("no chest pain", "nonanginal", "atypical", "typical")
+    ),
+    `Dyspnea` = forcats::fct_relevel(
+      .data[["Dyspnea"]], 
+      c("no", "yes")
+    ),
+  ) |> 
+  reactable_with_download_csv_button(
+    defaultPageSize = 5,
+    paginationType = "jump",
+    style = list(fontSize = "1rem"),
+  )
+
+```
+
+:::
+
+::::
+
+## Variable Mapping
+
+Let the reader know how the collaborator data `Smoke History` is going to be mapped.
+
+![](images/mapping_procedure.png){fig-alt="Documentation indicating how the collaborator's data Smoke History is going to be mapped or harmonised in Quarto code and output." fig-align="center" width="100%"}
+
+## Variable Mapping
+
+![](images/code_to_map.png){fig-alt="Code to do mapping." fig-align="center" width="30%"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: smoking data harmonisation
+#| echo: true
+#| code-line-numbers: "|2,3|5-14"
+
+smoking_data <- cohort_csv_data |>
+  dplyr::select(c("cohort_unique_id", 
+                  "Smoke History")) |>
+  dplyr::mutate(
+    smoke_current = dplyr::case_when(
+      is.na(.data[["Smoke History"]]) ~ "-1",
+      .data[["Smoke History"]] == "non-smoker" ~ "0",
+      .data[["Smoke History"]] == "past smoker" ~ "0",
+      .data[["Smoke History"]] == "current smoker" ~ "1",
+      .default = NA_character_
+    ),
+    smoke_current = forcats::fct_relevel(
+      .data[["smoke_current"]],
+      c("0", "1")), 
+    smoke_past = dplyr::case_when(
+      is.na(.data[["Smoke History"]]) ~ "-1",
+      .data[["Smoke History"]] == "non-smoker" ~ "0",
+      .data[["Smoke History"]] == "past smoker" ~ "1",
+      .data[["Smoke History"]] == "current smoker" ~ "0",
+      .default = NA_character_
+    ),
+    smoke_past = forcats::fct_relevel(
+      .data[["smoke_past"]],
+      c("0", "1")),
+    `Smoke History` = forcats::fct(
+      .data[["Smoke History"]]
+    )
+  )
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+![](images/smoking_history_documentation.png){fig-alt="Documentation of harmonisation of smoking history." fig-align="center" width="100%"}
+
+:::
+
+::::
+
+## Variable Mapping
+
+![](images/code_to_validate.png){fig-alt="Code to do validation." fig-align="center" width="30%"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: smoking data validation
+#| echo: true
+
+smoking_data <- smoking_data |>
+  pointblank::col_vals_in_set(
+    columns = c("smoke_current", "smoke_past"),
+    set = c("0", "1", "-1")
+  ) |> 
+  pointblank::col_vals_expr(
+    expr = pointblank::expr(
+      (.data[["smoke_current"]] == "1" & .data[["smoke_past"]] == "0") |
+      (.data[["smoke_current"]] == "-1" & .data[["smoke_past"]] == -"1") |
+      (.data[["smoke_current"]] == "0" & .data[["smoke_past"]] %in% c("0", "1"))
+    )
+  )
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+![](images/smoking_history_validation.png){fig-alt="Documentation of harmonisation of smoking history." fig-align="center" width="100%"}
+
+:::
+
+::::
+
+Reference: <https://github.com/rstudio/pointblank/issues/578>
+
+## Variable Mapping
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](images/example_works.png){fig-alt="Show examples that the code works." fig-align="center" width="100%"}
+![](images/print_reactable.png){fig-alt="Code to print the reactable in html file." fig-align="center" width="100%"}
+
+:::
+
+::: {.column width="50%"}
+
+:::{.center-h}
+[**Html Output**]{style="font-size: 80%;"}
+:::
+
+```{r}
+#| label: smoking data html
+
+smoking_data |> 
+  reactable_with_download_csv_button(
+    defaultPageSize = 5,
+    paginationType = "jump",
+    style = list(fontSize = "1rem"),
+  )
+
+```
+
+:::
+
+::::
+
+## Variable Mapping
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](images/example_works.png){fig-alt="Show examples that the code works." fig-align="center" width="100%"}
+![](images/print_code_pdf.png){fig-alt="Code to print the table in pdf file." fig-align="center" width="100%"}
+
+:::
+
+::: {.column width="50%"}
+
+:::{.center-h}
+[**Pdf Output**]{style="font-size: 80%;"}
+:::
+
+![](images/print_pdf.png){fig-alt="Output code in pdf file." fig-align="center" width="100%"}
+
+![](images/print_pdf_2.png){fig-alt="Output table in pdf file." fig-align="center" width="100%"}
+:::
+
+::::
+
+## Variable Mapping
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](images/clean_for_merging.png){fig-alt="Clean for merging." fig-align="center" width="50%"}
+```{r}
+#| label: smoking data for merging
+#| echo: true
+
+smoking_data <- smoking_data |>
+  dplyr::select(-c("Smoke History"))
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: smoking data for merging html
+
+smoking_data |> 
+  reactable_with_download_csv_button(
+    defaultPageSize = 5,
+    paginationType = "jump",
+    style = list(fontSize = "1rem"),
+  )
+
+```
+
+:::
+
+::::
+
+## Merging Harmonised Data
+
+We have completed harmonising a batch of clinical data. How can we merge them without issues of missing rows or additional columns. 
+
+

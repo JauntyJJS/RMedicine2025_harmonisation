@@ -15,7 +15,7 @@ B013,51,Male,188,80,current smoker,nonanginal,no
 B014,23,Female,160,55,non-smoker,no chest pain,no
 B015,75,Male,173,70,past smoker,typical,yes
 B016,41,Male,175,85,non-smoker,nonanginal,no
-B017,42,Female,169,69,non-smoker,typical,no
+B017,42,Female,169,69,,typical,no
 B018,56,Male,167,70,past smoker,no chest pain,no
 B019,45,Female,178,93,non-smoker,no chest pain,no
 B020,50,Female,174,72,current smoker,no chest pain,yes
