@@ -98,7 +98,7 @@
     code span.vs { color: #bf0303; } /* VerbatimString */
     code span.wa { color: #bf0303; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-74f4036111a75ef32cc92ec31ecb9ad2.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-b693395f897e72ed6cf3c2d7d7468507.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -218,20 +218,23 @@ Jeremy Selva <a href="https://www.linkedin.com/in/jeremy-selva-085b9112a/" targe
 </section>
 <section id="automated-capture-of-warnings-csv" class="slide level2">
 <h2>Automated capture of warnings (csv)</h2>
-<p>When reading files in batches or the same file but in a different version. Is there an automated way to catch warnings/issues when reading csv ?</p>
+<p>When reading files in batches or the same file but in a different version, is there an automated way to catch warnings/issues when reading csv ?</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>cohort_data_csv <span class="ot">&lt;-</span> vroom<span class="sc">::</span><span class="fu">vroom</span>(</span>
+<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="|9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>cohort_data_csv <span class="ot">&lt;-</span> vroom<span class="sc">::</span><span class="fu">vroom</span>(</span>
 <span id="cb1-2"><a href=""></a>  <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>, <span class="st">"Cohort_csv"</span>, </span>
 <span id="cb1-3"><a href=""></a>    <span class="st">"data_to_harmonise_age_issue.csv"</span>),</span>
 <span id="cb1-4"><a href=""></a>  <span class="at">delim =</span> <span class="st">","</span>,</span>
 <span id="cb1-5"><a href=""></a>  <span class="at">col_select =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
 <span id="cb1-6"><a href=""></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb1-7"><a href=""></a>  <span class="at">col_types =</span> <span class="fu">list</span>(<span class="at">ID =</span> vroom<span class="sc">::</span><span class="fu">col_character</span>(), <span class="at">Age =</span> vroom<span class="sc">::</span><span class="fu">col_integer</span>())</span>
-<span id="cb1-8"><a href=""></a>  )</span>
-<span id="cb1-9"><a href=""></a></span>
-<span id="cb1-10"><a href=""></a><span class="fu">head</span>(cohort_data_csv, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href=""></a>  <span class="at">col_types =</span> <span class="fu">list</span>(</span>
+<span id="cb1-8"><a href=""></a>    <span class="at">ID =</span> vroom<span class="sc">::</span><span class="fu">col_character</span>(), </span>
+<span id="cb1-9"><a href=""></a>    <span class="at">Age =</span> vroom<span class="sc">::</span><span class="fu">col_integer</span>()</span>
+<span id="cb1-10"><a href=""></a>  )</span>
+<span id="cb1-11"><a href=""></a>)</span>
+<span id="cb1-12"><a href=""></a></span>
+<span id="cb1-13"><a href=""></a><span class="fu">head</span>(cohort_data_csv, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2</code></pre>
 </div>
@@ -250,12 +253,16 @@ e.g.:
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<p>An image here</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/age_issue_csv.jpg" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="A csv file with text data in the Age column."></p>
+</figure>
+</div>
 </div></div>
 </section>
 <section id="automated-capture-of-warnings-csv-1" class="slide level2">
 <h2>Automated capture of warnings (csv)</h2>
-<p>If there are issues with the data, the output of <code>vroom::problems</code> will be a tibble.</p>
+<p>If there are issues with the data, the output of <a href="https://vroom.r-lib.org/reference/problems.html" target="_blank"><code>vroom::problems</code></a> will be a tibble.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>cohort_data_csv <span class="sc">|&gt;</span> </span>
 <span id="cb5-2"><a href=""></a>  vroom<span class="sc">::</span><span class="fu">problems</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -269,7 +276,7 @@ e.g.:
 4    17     2 an integer missing D:/Jeremy/PortableR/RPortableWorkDirectory/RMe…</code></pre>
 </div>
 </div>
-<p>To check for this in an automatically, we can use <code>pointblank::expect_row_count_match</code>.</p>
+<p>To check for this in an automatically, we can use <a href="https://rstudio.github.io/pointblank/reference/row_count_match.html" target="_blank"><code>pointblank::expect_row_count_match</code></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>cohort_data_csv <span class="sc">|&gt;</span> </span>
 <span id="cb7-2"><a href=""></a>  vroom<span class="sc">::</span><span class="fu">problems</span>() <span class="sc">|&gt;</span> </span>
@@ -281,19 +288,57 @@ The `expect_row_count_match()` validation failed beyond the absolute threshold l
 </div>
 </div>
 </section>
+<section id="automated-capture-of-warnings-csv-2" class="slide level2">
+<h2>Automated capture of warnings (csv)</h2>
+<p>Here is a case with no issues.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>cohort_data_csv <span class="ot">&lt;-</span> vroom<span class="sc">::</span><span class="fu">vroom</span>(</span>
+<span id="cb9-2"><a href=""></a>  <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>, <span class="st">"Cohort_csv"</span>, </span>
+<span id="cb9-3"><a href=""></a>    <span class="st">"data_to_harmonise_age_issue_fixed.csv"</span>),</span>
+<span id="cb9-4"><a href=""></a>  <span class="at">delim =</span> <span class="st">","</span>,</span>
+<span id="cb9-5"><a href=""></a>  <span class="at">col_select =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
+<span id="cb9-6"><a href=""></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb9-7"><a href=""></a>  <span class="at">col_types =</span> <span class="fu">list</span>(</span>
+<span id="cb9-8"><a href=""></a>    <span class="at">ID =</span> vroom<span class="sc">::</span><span class="fu">col_character</span>(), </span>
+<span id="cb9-9"><a href=""></a>    <span class="at">Age =</span> vroom<span class="sc">::</span><span class="fu">col_integer</span>()</span>
+<span id="cb9-10"><a href=""></a>  )</span>
+<span id="cb9-11"><a href=""></a>)</span>
+<span id="cb9-12"><a href=""></a></span>
+<span id="cb9-13"><a href=""></a>cohort_data_csv <span class="sc">|&gt;</span> </span>
+<span id="cb9-14"><a href=""></a>  vroom<span class="sc">::</span><span class="fu">problems</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 5
+# ℹ 5 variables: row &lt;int&gt;, col &lt;int&gt;, expected &lt;chr&gt;, actual &lt;chr&gt;, file &lt;chr&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>cohort_data_csv <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href=""></a>  vroom<span class="sc">::</span><span class="fu">problems</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href=""></a>  pointblank<span class="sc">::</span><span class="fu">expect_row_count_match</span>(<span class="at">count =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/age_issue_fixed_csv.jpg" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="A csv file with only integer data in the Age column."></p>
+</figure>
+</div>
+</div></div>
+</section>
 <section id="automated-capture-of-warnings-excel" class="slide level2">
 <h2>Automated capture of warnings (Excel)</h2>
 <p>Is there an automated way to catch warnings/issues when reading Excel ?</p>
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>cohort_data_excel <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(</span>
-<span id="cb9-2"><a href=""></a>  <span class="at">path =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>, <span class="st">"Cohort_Excel"</span>, </span>
-<span id="cb9-3"><a href=""></a>    <span class="st">"data_to_harmonise_age_issue.xlsx"</span>),</span>
-<span id="cb9-4"><a href=""></a>  <span class="at">sheet =</span> <span class="st">"Sheet1"</span>,</span>
-<span id="cb9-5"><a href=""></a>  <span class="at">col_types =</span> <span class="fu">c</span>(</span>
-<span id="cb9-6"><a href=""></a>    <span class="st">"text"</span>, <span class="st">"numeric"</span></span>
-<span id="cb9-7"><a href=""></a>    )</span>
-<span id="cb9-8"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>cohort_data_excel <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(</span>
+<span id="cb12-2"><a href=""></a>  <span class="at">path =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>, <span class="st">"Cohort_Excel"</span>, </span>
+<span id="cb12-3"><a href=""></a>    <span class="st">"data_to_harmonise_age_issue.xlsx"</span>),</span>
+<span id="cb12-4"><a href=""></a>  <span class="at">sheet =</span> <span class="st">"Sheet1"</span>,</span>
+<span id="cb12-5"><a href=""></a>  <span class="at">col_types =</span> <span class="fu">c</span>(</span>
+<span id="cb12-6"><a href=""></a>    <span class="st">"text"</span>, <span class="st">"numeric"</span></span>
+<span id="cb12-7"><a href=""></a>    )</span>
+<span id="cb12-8"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Expecting numeric in B7 / R7C2: got 'missing'</code></pre>
 </div>
@@ -301,75 +346,112 @@ The `expect_row_count_match()` validation failed beyond the absolute threshold l
 <pre><code>Warning: Expecting numeric in B14 / R14C2: got 'missing'</code></pre>
 </div>
 </div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/age_issue_excel.jpg" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="An Excel file with text data in the Age column."></p>
+</figure>
+</div>
 </div></section>
 <section id="automated-capture-of-warnings-excel-1" class="slide level2">
 <h2>Automated capture of warnings (Excel)</h2>
-<p>We can read the new file in the following way.</p>
+<p>We can read the Excel file with <a href="https://testthat.r-lib.org/reference/expect_error.html" target="_blank"><code>testthat::expect_no_condition</code></a>.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>testthat<span class="sc">::</span><span class="fu">expect_no_condition</span>(</span>
-<span id="cb12-2"><a href=""></a>  cohort_data_excel <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(</span>
-<span id="cb12-3"><a href=""></a>    <span class="at">path =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>, <span class="st">"Cohort_Excel"</span>, </span>
-<span id="cb12-4"><a href=""></a>      <span class="st">"data_to_harmonise_age_issue.xlsx"</span>),</span>
-<span id="cb12-5"><a href=""></a>    <span class="at">sheet =</span> <span class="st">"Sheet1"</span>,</span>
-<span id="cb12-6"><a href=""></a>    <span class="at">col_types =</span> <span class="fu">c</span>(<span class="st">"text"</span>, <span class="st">"numeric"</span>)</span>
-<span id="cb12-7"><a href=""></a>  )</span>
-<span id="cb12-8"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="|1,8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>testthat<span class="sc">::</span><span class="fu">expect_no_condition</span>(</span>
+<span id="cb15-2"><a href=""></a>  cohort_data_excel <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(</span>
+<span id="cb15-3"><a href=""></a>    <span class="at">path =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>, <span class="st">"Cohort_Excel"</span>, </span>
+<span id="cb15-4"><a href=""></a>      <span class="st">"data_to_harmonise_age_issue.xlsx"</span>),</span>
+<span id="cb15-5"><a href=""></a>    <span class="at">sheet =</span> <span class="st">"Sheet1"</span>,</span>
+<span id="cb15-6"><a href=""></a>    <span class="at">col_types =</span> <span class="fu">c</span>(<span class="st">"text"</span>, <span class="st">"numeric"</span>)</span>
+<span id="cb15-7"><a href=""></a>  )</span>
+<span id="cb15-8"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error: Expected `... &lt;- NULL` to run without any conditions.
 ℹ Actually got a &lt;simpleWarning&gt; with text:
   Expecting numeric in B7 / R7C2: got 'missing'</code></pre>
 </div>
 </div>
-<p>However, this method means that you will lose the pipe workflow.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>testthat<span class="sc">::</span><span class="fu">expect_no_condition</span>(</span>
-<span id="cb14-2"><a href=""></a>  cohort_data_excel_2 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(</span>
-<span id="cb14-3"><a href=""></a>    <span class="at">path =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>, <span class="st">"Cohort_Excel"</span>, </span>
-<span id="cb14-4"><a href=""></a>      <span class="st">"data_to_harmonise_age_issue_fixed.xlsx"</span>),</span>
-<span id="cb14-5"><a href=""></a>    <span class="at">sheet =</span> <span class="st">"Sheet1"</span>,</span>
-<span id="cb14-6"><a href=""></a>    <span class="at">col_types =</span> <span class="fu">c</span>(<span class="st">"text"</span>, <span class="st">"numeric"</span>)</span>
-<span id="cb14-7"><a href=""></a>  )</span>
-<span id="cb14-8"><a href=""></a>)</span>
-<span id="cb14-9"><a href=""></a></span>
-<span id="cb14-10"><a href=""></a>cohort_data_excel_2 <span class="ot">&lt;-</span> cohort_data_excel_2 <span class="sc">|&gt;</span> </span>
-<span id="cb14-11"><a href=""></a><span class="co"># Check if Serial Number is unique</span></span>
-<span id="cb14-12"><a href=""></a>  pointblank<span class="sc">::</span><span class="fu">rows_distinct</span>(</span>
-<span id="cb14-13"><a href=""></a>    <span class="at">columns =</span> <span class="st">"Serial Number"</span>,</span>
-<span id="cb14-14"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/age_issue_excel.jpg" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="An Excel file with text data in the Age column."></p>
+</figure>
 </div>
+</div></div>
 </section>
 <section id="automated-capture-of-warnings-excel-2" class="slide level2">
 <h2>Automated capture of warnings (Excel)</h2>
-<p>We can use the tee pipe operator <code>%T&gt;%</code>.</p>
+<p>However, this method means that you will lose the pipe workflow.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>cohort_data_excel <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(</span>
-<span id="cb15-2"><a href=""></a>  <span class="at">path =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>, <span class="st">"Cohort_Excel"</span>, </span>
-<span id="cb15-3"><a href=""></a>    <span class="st">"data_to_harmonise_age_issue.xlsx"</span>),</span>
-<span id="cb15-4"><a href=""></a>  <span class="at">sheet =</span> <span class="st">"Sheet1"</span>,</span>
-<span id="cb15-5"><a href=""></a>  <span class="at">col_types =</span> <span class="fu">c</span>(</span>
-<span id="cb15-6"><a href=""></a>    <span class="st">"text"</span>, <span class="st">"numeric"</span></span>
-<span id="cb15-7"><a href=""></a>    )</span>
-<span id="cb15-8"><a href=""></a>  ) <span class="sc">%T&gt;%</span></span>
-<span id="cb15-9"><a href=""></a>  testthat<span class="sc">::</span><span class="fu">expect_no_condition</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>testthat<span class="sc">::</span><span class="fu">expect_no_condition</span>(</span>
+<span id="cb17-2"><a href=""></a>  cohort_data_excel <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(</span>
+<span id="cb17-3"><a href=""></a>    <span class="at">path =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>, <span class="st">"Cohort_Excel"</span>, </span>
+<span id="cb17-4"><a href=""></a>      <span class="st">"data_to_harmonise_age_issue_fixed.xlsx"</span>),</span>
+<span id="cb17-5"><a href=""></a>    <span class="at">sheet =</span> <span class="st">"Sheet1"</span>,</span>
+<span id="cb17-6"><a href=""></a>    <span class="at">col_types =</span> <span class="fu">c</span>(<span class="st">"text"</span>, <span class="st">"numeric"</span>)</span>
+<span id="cb17-7"><a href=""></a>  )</span>
+<span id="cb17-8"><a href=""></a>)</span>
+<span id="cb17-9"><a href=""></a></span>
+<span id="cb17-10"><a href=""></a>cohort_data_excel <span class="ot">&lt;-</span> cohort_data_excel <span class="sc">|&gt;</span> </span>
+<span id="cb17-11"><a href=""></a>  <span class="co"># Check if Serial Number is unique</span></span>
+<span id="cb17-12"><a href=""></a>  pointblank<span class="sc">::</span><span class="fu">rows_distinct</span>(</span>
+<span id="cb17-13"><a href=""></a>    <span class="at">columns =</span> <span class="st">"Serial Number"</span>,</span>
+<span id="cb17-14"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/age_issue_fixed_excel.jpg" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="An Excel file with numeric data in the Age column."></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="automated-capture-of-warnings-excel-3" class="slide level2">
+<h2>Automated capture of warnings (Excel)</h2>
+<p>We can use the tee pipe operator <a href="https://magrittr.tidyverse.org/reference/tee.html" target="_blank"><code>%T&gt;%</code></a>.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="center-h">
+<p><span style="font-size: 80%;"><strong>With Issues</strong></span></p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="|8,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>cohort_data_excel <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(</span>
+<span id="cb18-2"><a href=""></a>  <span class="at">path =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>, <span class="st">"Cohort_Excel"</span>, </span>
+<span id="cb18-3"><a href=""></a>    <span class="st">"data_to_harmonise_age_issue.xlsx"</span>),</span>
+<span id="cb18-4"><a href=""></a>  <span class="at">sheet =</span> <span class="st">"Sheet1"</span>,</span>
+<span id="cb18-5"><a href=""></a>  <span class="at">col_types =</span> <span class="fu">c</span>(</span>
+<span id="cb18-6"><a href=""></a>    <span class="st">"text"</span>, <span class="st">"numeric"</span></span>
+<span id="cb18-7"><a href=""></a>    )</span>
+<span id="cb18-8"><a href=""></a>  ) <span class="sc">%T&gt;%</span></span>
+<span id="cb18-9"><a href=""></a>  testthat<span class="sc">::</span><span class="fu">expect_no_condition</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error: Expected `.` to run without any conditions.
 ℹ Actually got a &lt;simpleWarning&gt; with text:
   Expecting numeric in B7 / R7C2: got 'missing'</code></pre>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>cohort_data_excel_2 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(</span>
-<span id="cb17-2"><a href=""></a>  <span class="at">path =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>, <span class="st">"Cohort_Excel"</span>, </span>
-<span id="cb17-3"><a href=""></a>    <span class="st">"data_to_harmonise_age_issue_fixed.xlsx"</span>),</span>
-<span id="cb17-4"><a href=""></a>  <span class="at">sheet =</span> <span class="st">"Sheet1"</span>,</span>
-<span id="cb17-5"><a href=""></a>  <span class="at">col_types =</span> <span class="fu">c</span>(<span class="st">"text"</span>, <span class="st">"numeric"</span>)</span>
-<span id="cb17-6"><a href=""></a>) <span class="sc">%T&gt;%</span></span>
-<span id="cb17-7"><a href=""></a>testthat<span class="sc">::</span><span class="fu">expect_no_condition</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb17-8"><a href=""></a><span class="co"># Check if Serial Number is unique</span></span>
-<span id="cb17-9"><a href=""></a>  pointblank<span class="sc">::</span><span class="fu">rows_distinct</span>(</span>
-<span id="cb17-10"><a href=""></a>    <span class="at">columns =</span> <span class="st">"Serial Number"</span>,</span>
-<span id="cb17-11"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="center-h">
+<p><span style="font-size: 80%;"><strong>No Issues</strong></span></p>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="|6,7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>cohort_data_excel_2 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(</span>
+<span id="cb20-2"><a href=""></a>  <span class="at">path =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>, <span class="st">"Cohort_Excel"</span>, </span>
+<span id="cb20-3"><a href=""></a>    <span class="st">"data_to_harmonise_age_issue_fixed.xlsx"</span>),</span>
+<span id="cb20-4"><a href=""></a>  <span class="at">sheet =</span> <span class="st">"Sheet1"</span>,</span>
+<span id="cb20-5"><a href=""></a>  <span class="at">col_types =</span> <span class="fu">c</span>(<span class="st">"text"</span>, <span class="st">"numeric"</span>)</span>
+<span id="cb20-6"><a href=""></a>) <span class="sc">%T&gt;%</span></span>
+<span id="cb20-7"><a href=""></a>testthat<span class="sc">::</span><span class="fu">expect_no_condition</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb20-8"><a href=""></a><span class="co"># Check if Serial Number is unique</span></span>
+<span id="cb20-9"><a href=""></a>  pointblank<span class="sc">::</span><span class="fu">rows_distinct</span>(</span>
+<span id="cb20-10"><a href=""></a>    <span class="at">columns =</span> <span class="st">"Serial Number"</span>,</span>
+<span id="cb20-11"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div></div>
 
 </section>
     </div>

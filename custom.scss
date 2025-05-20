@@ -51,8 +51,12 @@ $code-block-bg: #ffffff;
   height: 1.2%;
 }
 
+.reveal section div.center-h {
+	text-align: center;
+}
+
 .reveal code {
-  font-size: 0.9em !important;
+  font-size: 0.85em !important;
   font-weight: bold;
   color: #8328c1;
 }
@@ -75,7 +79,7 @@ $code-block-bg: #ffffff;
 .reveal div.sourceCode {
   //border: none;
   border-radius: 12px;
-  margin-top: 0px !important;
+  margin-top: 10px !important;
   margin-bottom: 10px !important;
 }
 

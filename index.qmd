@@ -86,7 +86,7 @@ Suggested reports and diagrams to create for different clients.
 
 ## Automated capture of warnings (csv)
 
-When reading files in batches or the same file but in a different version. Is there an automated way to catch warnings/issues when reading csv ?
+When reading files in batches or the same file but in a different version, is there an automated way to catch warnings/issues when reading csv ?
 
 :::: {.columns}
 
@@ -95,6 +95,7 @@ When reading files in batches or the same file but in a different version. Is th
 ```{r}
 #| label: read data with warnings csv
 #| echo: true
+#| code-line-numbers: "|9"
 #| warning: true
 
 cohort_data_csv <- vroom::vroom(
@@ -103,8 +104,11 @@ cohort_data_csv <- vroom::vroom(
   delim = ",",
   col_select = 1:2,
   show_col_types = FALSE,
-  col_types = list(ID = vroom::col_character(), Age = vroom::col_integer())
+  col_types = list(
+    ID = vroom::col_character(), 
+    Age = vroom::col_integer()
   )
+)
 
 head(cohort_data_csv, n = 3)
 
@@ -114,7 +118,7 @@ head(cohort_data_csv, n = 3)
 
 ::: {.column width="50%"}
 
-An image here
+![](images/age_issue_csv.jpg){fig-alt="A csv file with text data in the Age column." fig-align="center" width="100%"}
 
 :::
 
@@ -122,7 +126,7 @@ An image here
 
 ## Automated capture of warnings (csv)
 
-If there are issues with the data, the output of `vroom::problems` will be a tibble.
+If there are issues with the data, the output of [`vroom::problems`](https://vroom.r-lib.org/reference/problems.html){target="_blank"} will be a tibble.
 
 ```{r}
 #| label: view problem in vroom
@@ -134,7 +138,7 @@ cohort_data_csv |>
 
 ```
 
-To check for this in an automatically, we can use `pointblank::expect_row_count_match`.
+To check for this in an automatically, we can use [`pointblank::expect_row_count_match`](https://rstudio.github.io/pointblank/reference/row_count_match.html){target="_blank"}.
 
 ```{r}
 #| label: safeguard problem with vroom and pointblank
@@ -146,6 +150,57 @@ cohort_data_csv |>
   pointblank::expect_row_count_match(count = 0)
 
 ```
+
+## Automated capture of warnings (csv)
+
+Here is a case with no issues.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: read data with no issues csv
+#| echo: true
+#| warning: true
+
+cohort_data_csv <- vroom::vroom(
+  file = here::here("data-raw", "Cohort_csv", 
+    "data_to_harmonise_age_issue_fixed.csv"),
+  delim = ",",
+  col_select = 1:2,
+  show_col_types = FALSE,
+  col_types = list(
+    ID = vroom::col_character(), 
+    Age = vroom::col_integer()
+  )
+)
+
+cohort_data_csv |> 
+  vroom::problems()
+
+```
+
+```{r}
+#| label: read data with no issues csv safeguard
+#| echo: true
+#| warning: true
+
+cohort_data_csv |> 
+  vroom::problems() |> 
+  pointblank::expect_row_count_match(count = 0)
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+![](images/age_issue_fixed_csv.jpg){fig-alt="A csv file with only integer data in the Age column." fig-align="center" width="100%"}
+
+:::
+
+::::
 
 ## Automated capture of warnings (Excel)
 
@@ -170,13 +225,24 @@ cohort_data_excel <- readxl::read_excel(
 
 :::
 
+::: {.column width="50%"}
+
+![](images/age_issue_excel.jpg){fig-alt="An Excel file with text data in the Age column." fig-align="center" width="100%"}
+
+:::
+
 ## Automated capture of warnings (Excel)
 
-We can read the new file in the following way.
+We can read the Excel file with [`testthat::expect_no_condition`](https://testthat.r-lib.org/reference/expect_error.html){target="_blank"}.
+
+:::: {.columns}
+
+::: {.column width="50%"}
 
 ```{r}
 #| label: read data with issues using testthat
 #| echo: true
+#| code-line-numbers: "|1,8"
 #| error: true
 
 testthat::expect_no_condition(
@@ -189,14 +255,30 @@ testthat::expect_no_condition(
 )
 ```
 
+:::
+
+::: {.column width="50%"}
+
+![](images/age_issue_excel.jpg){fig-alt="An Excel file with text data in the Age column." fig-align="center" width="100%"}
+
+:::
+
+::::
+
+## Automated capture of warnings (Excel)
+
 However, this method means that you will lose the pipe workflow.
+
+:::: {.columns}
+
+::: {.column width="50%"}
 
 ```{r}
 #| label: read data without issues using testthat
 #| echo: true
 
 testthat::expect_no_condition(
-  cohort_data_excel_2 <- readxl::read_excel(
+  cohort_data_excel <- readxl::read_excel(
     path = here::here("data-raw", "Cohort_Excel", 
       "data_to_harmonise_age_issue_fixed.xlsx"),
     sheet = "Sheet1",
@@ -204,20 +286,39 @@ testthat::expect_no_condition(
   )
 )
 
-cohort_data_excel_2 <- cohort_data_excel_2 |> 
-# Check if Serial Number is unique
+cohort_data_excel <- cohort_data_excel |> 
+  # Check if Serial Number is unique
   pointblank::rows_distinct(
     columns = "Serial Number",
   )
 ```
 
+:::
+
+::: {.column width="50%"}
+
+![](images/age_issue_fixed_excel.jpg){fig-alt="An Excel file with numeric data in the Age column." fig-align="center" width="100%"}
+
+:::
+
+::::
+
 ## Automated capture of warnings (Excel)
 
-We can use the tee pipe operator `%T>%`.
+We can use the tee pipe operator [`%T>%`](https://magrittr.tidyverse.org/reference/tee.html){target="_blank"}.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+:::{.center-h}
+[**With Issues**]{style="font-size: 80%;"}
+:::
 
 ```{r}
 #| label: read data with issues using testthat and tee pipe
 #| echo: true
+#| code-line-numbers: "|8,9"
 #| error: true
 
 cohort_data_excel <- readxl::read_excel(
@@ -231,8 +332,17 @@ cohort_data_excel <- readxl::read_excel(
   testthat::expect_no_condition()
 ```
 
+:::
+
+::: {.column width="50%"}
+
+:::{.center-h}
+[**No Issues**]{style="font-size: 80%;"}
+:::
+
 ```{r}
 #| label: read data without issues using testthat and tee pipe
+#| code-line-numbers: "|6,7"
 #| echo: true
 
 cohort_data_excel_2 <- readxl::read_excel(
@@ -248,3 +358,7 @@ testthat::expect_no_condition() |>
 )
 
 ```
+
+:::
+
+::::
