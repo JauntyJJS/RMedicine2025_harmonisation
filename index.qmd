@@ -91,6 +91,105 @@ Cover ways to counter small but annoying issues during retrospective data harmon
 
 Suggested reports and diagrams to create for different clients.
 
+## About Retropective Data Harmonisation
+
+![](images/data_harmonisation.png){fig-alt="The data harmonization process: Study data variables collected from different sources need to be mapped to one another, classified into the generalized concepts they represent, and transformed into unified harmonized variables for analysis" fig-align="center" width="100%"}
+
+Images from Mallya et al. Circ Cardiovasc Qual Outcomes. 2023 Nov; 16(11):e009938 doi: [10.1161/CIRCOUTCOMES.123.009938](https://doi.org/10.1161/CIRCOUTCOMES.123.009938){target="_blank"}.
+
+## Tasks
+
+Here is a summary of my task for an international study.
+
+![](images/harmonisation_task.png){fig-alt="Data harmonization task: Liaise with collaborator on what variables we need for the study and collect them by providing a data dictionary and input template file, harmonise data provided and return a harmonised dataset with a report of how data is harmonised, and provide analyst team combined data for further analysis." fig-align="center" width="100%"}
+
+<!-- *  Liaise with collaborator on what variables we need for the study and collect them -->
+<!--    *  Provide a data dictionary to indicate what variables are needed and how they should be represented. -->
+<!--    *  Provide an input template file for collaborators to fill in. -->
+<!-- *  Harmonise data provided from each collaborator. -->
+<!-- *  Return to collaborator harmonised dataset with a report of how data is harmonised. -->
+<!-- *  Merge data for all cohorts together and send to an analysis team for analysis. -->
+
+## Why Retropective Data Harmonisation ?
+
+Collaborators may not have resources (time/funding) to match their data to your data dictionary and input template. Data provided may have issues that needs relevant experience and may be hard to solve.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](images/237-fov.png){fig-alt="Comic from Monkeyuser.com showing finding bugs may need relevant experience." fig-align="center" width="100%"}
+
+[Fov](https://www.monkeyuser.com/2022/fov/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}
+
+:::
+
+::: {.column width="50%"}
+
+![](images/92-root-cause.png){fig-alt="Comic from Monkeyuser.com showing bugs can be hard to resolve." fig-align="center" width="70%"}
+
+[Root Cause](https://www.monkeyuser.com/2018/root-cause/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}
+
+:::
+
+::::
+
+## Issues
+
+Limited resources on how to do data harmonisation and to make a report out of this. 
+
+<!-- Many just focus on data management as a whole and offer a high level overivew of data harmonisation. -->
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+R packages related to data harmonisation
+
+*  [`retroharmonize`](https://github.com/rOpenGov/retroharmonize/){target="_blank"}
+*  [`psHarmonize`](https://github.com/NUDACC/psHarmonize){target="_blank"}
+*  [`ltertools`](https://github.com/lter/ltertools/){target="_blank"}
+
+:::
+
+::: {.column width="50%"}
+
+![](images/210-denvercoder9.png){fig-alt="Comic from Monkeyuser.com showing that it is hard to get help with programming issues." fig-align="center" width="70%"}
+[Denvercoder9](https://www.monkeyuser.com/2021/denvercoder9/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}
+
+:::
+
+::::
+
+## Issues
+
+High risk of getting blame should things don't go well.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](images/pointing_finger.jpg){fig-alt="Businessman kneel on floor with pointing finger to him." fig-align="center" width="87%"}
+
+Businessman kneel on floor with pointing finger to him by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464469-wind-up-businessman-end-of-energy-and-stop-working){target="_blank"}
+:::
+
+::: {.column width="50%"}
+
+![](images/246-joy.png){fig-alt="Comic from Monkeyuser.com showing the joy of watching other developers work on a bug no one wants to fix." fig-align="center" width="70%"}
+
+[Joy](https://www.monkeyuser.com/2022/joy/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}
+
+:::
+
+::::
+
+## Harmonisation Template
+
+```{=html}
+<iframe width="1000" height="600" src="https://jauntyjjs.github.io/harmonisation/" title="Harmonisation template" ></iframe>
+```
+
 ## Automated capture of warnings (csv)
 
 When reading files in batches or the same file but in a different version, is there an automated way to catch warnings/issues when reading csv ?
