@@ -78,6 +78,8 @@ library(pointblank)
 library(reactable)
 
 source("R/factor-reactable.R")
+source("R/integer-check.R")
+source("R/rounding.R")
 
 ```
 
@@ -648,6 +650,350 @@ smoking_data |>
 
 ## Merging Harmonised Data
 
-We have completed harmonising a batch of clinical data. How can we merge them without issues of missing rows or additional columns. 
+Supposed we have completed harmonising a batch of clinical data. How can we merge them without issues of missing rows or additional columns ?
 
+:::: {.columns}
 
+::: {.column width="50%"}
+
+```{r}
+#| label: age gender data
+
+age_gender_data <- cohort_csv_data |>
+  dplyr::select(c("cohort_unique_id", 
+                  "Age", 
+                  "Sex")) |>
+  pointblank::col_vals_expr(
+    expr = ~is_integer_vector(
+      cohort_A_data[["age"]],
+      allow_na = TRUE)
+  ) |>
+  dplyr::mutate(
+    # Convert age to type integer
+    age_years = as.integer(.data[["Age"]]),
+    # Convert categorical columns to factors
+    sex = dplyr::case_when(
+      .data[["Sex"]] == "Female" ~ "0",
+      .data[["Sex"]] == "Male" ~ "1",
+      .default = NA_character_
+    ),
+    `Sex` = forcats::fct_relevel(
+      .data[["Sex"]],
+      c("Female", "Male")
+    ),
+    sex = forcats::fct_relevel(
+      .data[["sex"]],
+      c("0", "1")),
+  ) |>
+  dplyr::relocate(
+    "sex",
+    .before = "Sex"
+  ) |> 
+  dplyr::relocate(
+    "age_years",
+    .after = "Age"
+  ) |>
+  pointblank::col_vals_in_set(
+    columns = "sex",
+    set = c("0", "1")
+  ) |> 
+  pointblank::col_vals_between(
+    columns = "age_years",
+    left = 0,
+    right = 100,
+    inclusive = c(FALSE, TRUE),
+    na_pass = TRUE
+  ) |>
+  dplyr::select(-c("Age", "Sex"))
+
+```
+
+```{r}
+#| label: age gender data for merging html
+#| echo: true
+
+age_gender_data |> 
+  reactable_with_download_csv_button(
+    defaultPageSize = 5,
+    paginationType = "jump",
+    style = list(fontSize = "1rem"),
+  )
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: body measurement data
+
+body_measurement_data <- cohort_csv_data |>
+  dplyr::select(c("cohort_unique_id", 
+                  "Height", "Weight")) |>
+  dplyr::mutate(
+    height_cm = .data[["Height"]],
+    weight_kg = .data[["Weight"]],
+    bsa_m2 = sqrt((.data[["height_cm"]] * .data[["weight_kg"]]) / 3600),
+    bsa_m2 = round_to_nearest_digit(.data[["bsa_m2"]], digits = 2),
+    bmi = .data[["weight_kg"]] / ((.data[["height_cm"]] / 100)^2),
+    bmi = round_to_nearest_digit(.data[["bmi"]], digits = 2),
+    height_cm = round_to_nearest_digit(.data[["height_cm"]], digits = 2),
+    weight_kg = round_to_nearest_digit(.data[["weight_kg"]], digits = 2)
+  ) |> 
+  pointblank::col_vals_between(
+    columns = "bmi",
+    left = 10,
+    right = 50,
+    inclusive = c(TRUE, TRUE),
+    na_pass = TRUE
+  ) |>
+  dplyr::select(-c("Height", "Weight"))
+
+```
+
+```{r}
+#| label: body measurement data for merging html
+#| echo: true
+
+body_measurement_data |> 
+  reactable_with_download_csv_button(
+    defaultPageSize = 5,
+    paginationType = "jump",
+    style = list(fontSize = "1rem"),
+  )
+
+```
+
+:::
+
+::::
+
+## Merging Harmonised Data
+
+`unmatched = "error"` in [`dplyr::left_join`](https://dplyr.tidyverse.org/reference/mutate-joins.html){target="_blank"} helps to avoid patients with no match.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: demo behave data
+#| code-line-numbers: "|4|7,11,15"
+#| echo: true
+
+join_specification <- dplyr::join_by("cohort_unique_id")
+
+demo_behave_data <- cohort_csv_data |>
+  dplyr::select(c("cohort_unique_id")) |>
+  dplyr::left_join(age_gender_data,
+                   by = join_specification,
+                   unmatched = "error",
+                   relationship = "one-to-one") |>
+  dplyr::left_join(body_measurement_data,
+                   by = join_specification,
+                   unmatched = "error",
+                   relationship = "one-to-one") |>
+  dplyr::left_join(smoking_data,
+                   by = join_specification,
+                   unmatched = "error",
+                   relationship = "one-to-one") |>
+  dplyr::relocate(c("bsa_m2", "bmi"),
+                  .after = "sex")
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: penguin error
+#| echo: true
+#| code-line-numbers: "|5,12,19"
+#| warning: true
+#| error: true
+
+three_penguins <- tibble::tribble(
+  ~samp_id, ~species,    ~island,
+  1,        "Adelie",    "Torgersen",
+  2,        "Gentoo",    "Biscoe",
+  3,        "Chinstrap", "Dream"
+)
+
+weight_extra <- tibble::tribble(
+  ~samp_id,  ~body_mass_g,
+  1,         3220,
+  2,         4730,
+  4,         4725
+)
+
+three_penguins |> 
+  dplyr::left_join(
+    y = weight_extra,
+    by = dplyr::join_by("samp_id"),
+    unmatched = "error"
+ ) 
+
+```
+
+:::
+
+::::
+
+Reference: <https://www.tidyverse.org/blog/2023/08/teach-tidyverse-23/#improved-and-expanded-_join-functionality>
+
+## Merging Harmonised Data
+
+`relationship = "one-to-one` in [`dplyr::left_join`](https://dplyr.tidyverse.org/reference/mutate-joins.html){target="_blank"} helps to avoid patients with multiple match.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: demo behave data 2
+#| code-line-numbers: "|8,12,16"
+#| echo: true
+
+join_specification <- dplyr::join_by("cohort_unique_id")
+
+demo_behave_data <- cohort_csv_data |>
+  dplyr::select(c("cohort_unique_id")) |>
+  dplyr::left_join(age_gender_data,
+                   by = join_specification,
+                   unmatched = "error",
+                   relationship = "one-to-one") |>
+  dplyr::left_join(body_measurement_data,
+                   by = join_specification,
+                   unmatched = "error",
+                   relationship = "one-to-one") |>
+  dplyr::left_join(smoking_data,
+                   by = join_specification,
+                   unmatched = "error",
+                   relationship = "one-to-one") |>
+  dplyr::relocate(c("bsa_m2", "bmi"),
+                  .after = "sex")
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: penguin error 2
+#| echo: true
+#| code-line-numbers: "|5,11,12,20"
+#| warning: true
+#| error: true
+
+three_penguins <- tibble::tribble(
+  ~samp_id, ~species,    ~island,
+  1,        "Adelie",    "Torgersen",
+  2,        "Gentoo",    "Biscoe",
+  3,        "Chinstrap", "Dream"
+)
+
+weight_extra <- tibble::tribble(
+  ~samp_id,  ~body_mass_g,
+  1,         3220,
+  2,         4730,
+  2,         4725,
+  3,         4000
+)
+
+three_penguins |> 
+  dplyr::left_join(
+    y = weight_extra,
+    by = dplyr::join_by("samp_id"),
+    relationship = "one-to-one"
+ ) 
+
+```
+
+:::
+
+::::
+
+Reference: <https://www.tidyverse.org/blog/2023/08/teach-tidyverse-23/#improved-and-expanded-_join-functionality>
+
+## Merging Harmonised Data 
+
+Use [`pointblank::has_columns`](https://rstudio.github.io/pointblank/reference/has_columns.html){target="_blank"} to ensure we also have harmonised variables.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: demo behave data validation
+#| echo: true
+
+testthat::expect_false(
+  pointblank::has_columns(
+    demo_behave_data,
+    columns = c(dplyr::ends_with(".x"), dplyr::ends_with(".y"))
+  )
+)
+
+testthat::expect_equal(
+  ncol(demo_behave_data), 9
+)
+
+testthat::expect_true(
+  pointblank::has_columns(
+    demo_behave_data,
+    columns = c(
+      "age_years", "sex",
+      "height_cm", "weight_kg", "bsa_m2", "bmi",
+      "smoke_current", "smoke_past"
+    )
+  )
+) 
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: penguin error 3
+#| echo: true
+#| code-line-numbers: "|2,9|24"
+#| warning: true
+#| error: true
+
+three_penguins <- tibble::tribble(
+  ~samp_id, ~species,    ~island,
+  1,        "Adelie",    "Torgersen",
+  2,        "Gentoo",    "Biscoe",
+  3,        "Chinstrap", "Dream"
+)
+
+weight_extra <- tibble::tribble(
+  ~samp_id,  ~island,
+  1,         "Torgersen",
+  2,         "Biscoe",
+  3,         "Dream"
+)
+
+three_penguins <- three_penguins |> 
+  dplyr::left_join(
+    y = weight_extra,
+    by = dplyr::join_by("samp_id"),
+    unmatched = "error",
+    relationship = "one-to-one"
+ )
+
+three_penguins |> 
+  pointblank::has_columns(columns = c(dplyr::ends_with(".x"), dplyr::ends_with(".y")))
+
+colnames(three_penguins)
+
+```
+
+:::
+
+::::
