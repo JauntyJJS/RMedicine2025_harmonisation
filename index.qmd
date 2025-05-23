@@ -67,6 +67,7 @@ out_type <- knitr::opts_chunk$get("rmarkdown.pandoc.to")
 #| include: false
 #| echo: false
 
+library(quarto)
 library(dplyr)
 library(magrittr)
 library(forcats)
@@ -95,7 +96,7 @@ Suggested reports and diagrams to create for different clients.
 
 ![](images/data_harmonisation.png){fig-alt="The data harmonization process: Study data variables collected from different sources need to be mapped to one another, classified into the generalized concepts they represent, and transformed into unified harmonized variables for analysis" fig-align="center" width="100%"}
 
-Images from Mallya et al. Circ Cardiovasc Qual Outcomes. 2023 Nov; 16(11):e009938 doi: [10.1161/CIRCOUTCOMES.123.009938](https://doi.org/10.1161/CIRCOUTCOMES.123.009938){target="_blank"}.
+[Images from Mallya et al. Circ Cardiovasc Qual Outcomes. 2023 Nov; 16(11):e009938 doi: [10.1161/CIRCOUTCOMES.123.009938](https://doi.org/10.1161/CIRCOUTCOMES.123.009938){target="_blank"}]{style="font-size: 80%;"}.
 
 ## Tasks
 
@@ -120,7 +121,7 @@ Collaborators may not have resources (time/funding) to match their data to your 
 
 ![](images/237-fov.png){fig-alt="Comic from Monkeyuser.com showing finding bugs may need relevant experience." fig-align="center" width="100%"}
 
-[Fov](https://www.monkeyuser.com/2022/fov/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}
+[[Fov](https://www.monkeyuser.com/2022/fov/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}]{style="font-size: 80%;"}
 
 :::
 
@@ -128,7 +129,7 @@ Collaborators may not have resources (time/funding) to match their data to your 
 
 ![](images/92-root-cause.png){fig-alt="Comic from Monkeyuser.com showing bugs can be hard to resolve." fig-align="center" width="70%"}
 
-[Root Cause](https://www.monkeyuser.com/2018/root-cause/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}
+[[Root Cause](https://www.monkeyuser.com/2018/root-cause/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}]{style="font-size: 80%;"}
 
 :::
 
@@ -155,7 +156,8 @@ R packages related to data harmonisation
 ::: {.column width="50%"}
 
 ![](images/210-denvercoder9.png){fig-alt="Comic from Monkeyuser.com showing that it is hard to get help with programming issues." fig-align="center" width="70%"}
-[Denvercoder9](https://www.monkeyuser.com/2021/denvercoder9/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}
+
+[[Denvercoder9](https://www.monkeyuser.com/2021/denvercoder9/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}]{style="font-size: 80%;"}
 
 :::
 
@@ -169,16 +171,16 @@ High risk of getting blame should things don't go well.
 
 ::: {.column width="50%"}
 
-![](images/pointing_finger.jpg){fig-alt="Businessman kneel on floor with pointing finger to him." fig-align="center" width="87%"}
+![](images/pointing_finger.jpg){fig-alt="Businessman kneel on floor with fingers pointing to him." fig-align="center" width="87%"}
 
-Businessman kneel on floor with pointing finger to him by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464469-wind-up-businessman-end-of-energy-and-stop-working){target="_blank"}
+[Businessman kneel on floor with pointing finger to him by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464469-wind-up-businessman-end-of-energy-and-stop-working){target="_blank"}]{style="font-size: 80%;"}
 :::
 
 ::: {.column width="50%"}
 
 ![](images/246-joy.png){fig-alt="Comic from Monkeyuser.com showing the joy of watching other developers work on a bug no one wants to fix." fig-align="center" width="70%"}
 
-[Joy](https://www.monkeyuser.com/2022/joy/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}
+[[Joy](https://www.monkeyuser.com/2022/joy/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}]{style="font-size: 80%;"}
 
 :::
 
@@ -187,7 +189,7 @@ Businessman kneel on floor with pointing finger to him by [Amonrat Rungreangfang
 ## Harmonisation Template
 
 ```{=html}
-<iframe width="1000" height="600" src="https://jauntyjjs.github.io/harmonisation/" title="Harmonisation template" ></iframe>
+<iframe width="1000" height="580" src="https://jauntyjjs.github.io/harmonisation/" title="Harmonisation template" ></iframe>
 ```
 
 ## Automated capture of warnings (csv)
@@ -652,7 +654,7 @@ smoking_data <- smoking_data |>
 
 ::::
 
-Reference: <https://github.com/rstudio/pointblank/issues/578>
+[Reference: <https://github.com/rstudio/pointblank/issues/578>]{style="font-size: 80%;"}
 
 ## Variable Mapping
 
@@ -940,7 +942,7 @@ three_penguins |>
 
 ::::
 
-Reference: <https://www.tidyverse.org/blog/2023/08/teach-tidyverse-23/#improved-and-expanded-_join-functionality>
+[Reference: <https://www.tidyverse.org/blog/2023/08/teach-tidyverse-23/#improved-and-expanded-_join-functionality>]{style="font-size: 80%;"}
 
 ## Merging Harmonised Data
 
@@ -1015,7 +1017,7 @@ three_penguins |>
 
 ::::
 
-Reference: <https://www.tidyverse.org/blog/2023/08/teach-tidyverse-23/#improved-and-expanded-_join-functionality>
+[Reference: <https://www.tidyverse.org/blog/2023/08/teach-tidyverse-23/#improved-and-expanded-_join-functionality>]{style="font-size: 80%;"}
 
 ## Merging Harmonised Data 
 
@@ -1032,7 +1034,10 @@ Use [`pointblank::has_columns`](https://rstudio.github.io/pointblank/reference/h
 testthat::expect_false(
   pointblank::has_columns(
     demo_behave_data,
-    columns = c(dplyr::ends_with(".x"), dplyr::ends_with(".y"))
+    columns = c(
+      dplyr::ends_with(".x"), 
+      dplyr::ends_with(".y")
+    )
   )
 )
 
@@ -1060,7 +1065,7 @@ testthat::expect_true(
 ```{r}
 #| label: penguin error 3
 #| echo: true
-#| code-line-numbers: "|2,9|24"
+#| code-line-numbers: "|2,9|24-29"
 #| warning: true
 #| error: true
 
@@ -1087,7 +1092,12 @@ three_penguins <- three_penguins |>
  )
 
 three_penguins |> 
-  pointblank::has_columns(columns = c(dplyr::ends_with(".x"), dplyr::ends_with(".y")))
+  pointblank::has_columns(
+    columns = c(
+      dplyr::ends_with(".x"), 
+      dplyr::ends_with(".y")
+      )
+  )
 
 colnames(three_penguins)
 
@@ -1096,3 +1106,186 @@ colnames(three_penguins)
 :::
 
 ::::
+
+## Automated Report Challenge
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+One variable mapping report takes at least one page.
+
+On average, a clinical trial will have a few hundred variables.
+
+* [One hundred columns for clinical and demographics.]{style="font-size: 80%;"}
+* [Two hundred columns for medication.]{style="font-size: 80%;"}
+
+Harmonisation report can have at least a few hundreds pages for each cohort. 
+
+There is a need to automate the creation of these reports.
+
+:::
+
+::: {.column width="50%"}
+
+![](images/overload.jpg){fig-alt="Businessman in pile of documents asking for help, over workload." fig-align="center" width="87%"}
+
+[Businessman in pile of documents asking for help, over workload by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464741-businessman-in-pile-of-documents-asking-for-help-over-workload){target="_blank"}]{style="font-size: 80%;"}
+
+:::
+
+::::
+
+## Automated Report Challenge
+
+Collaborator wants different ways to report data harmonisation.
+
+## Quarto Books
+
+To make a Quarto book or website, we need a `_quarto.yml` and `index.qmd` file
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](images/quarto_yml.png){fig-alt="A preview of the _quarto.yml file." fig-align="center" width="100%"}
+
+:::
+
+::: {.column width="50%"}
+
+![](images/index_qmd.png){fig-alt="A preview of the index.qmd file." fig-align="center" width="100%"}
+
+:::
+
+::::
+
+## Automated Technical Report
+
+We create an `index.qmd` file for technical report generation.
+
+![](images/index_report_qmd.png){fig-alt="A preview of the index.qmd file for technical reporting." fig-align="center" width="100%"}
+
+## Automated Technical Report
+
+We create a `_quarto.yml` file and relevant Quarto files for each cohort.
+
+![](images/report_for_cohort_A.png){fig-alt="A preview of the _quarto.yml and relevant Quarto files for Cohort A." fig-align="center" width="100%"}
+
+## Automated Technical Report
+
+Create an automated script to generate a technical report in pdf, word and html for each cohort 
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+```{r}
+#| label: copy index report qmd
+#| echo: true
+#| eval: false
+
+# Copy the right index.qmd 
+# file
+
+index_qmd_file <- paste0(
+  "_index_",
+  "report",
+  ".qmd"
+)
+
+fs::file_copy(
+  path = here::here(
+    "templates",
+    "index-qmd",
+    index_qmd_file),
+  new_path = here::here(
+    "index.qmd"
+  ),
+  overwrite = TRUE
+)
+
+```
+
+:::
+
+::: {.column width="70%"}
+
+![](images/index_qmd_copy.png){fig-alt="index_report.qmd file copied and changed to index.qmd" fig-align="center" width="100%"}
+:::
+
+::::
+
+## Automated Technical Report
+
+Create an automated script to generate a technical report in pdf, word and html for each cohort 
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+```{r}
+#| label: automated report
+#| echo: true
+#| eval: false
+#| code-line-numbers: "|5-21|23-26|29-37"
+
+
+copy_and_render <- function(
+    cohort
+) {
+
+  # Copy quarto.yml file
+  # for each cohort
+  
+  quarto_yml_file <- paste0(
+    "_quarto_",
+    cohort,
+    ".yml"
+  )
+
+  fs::file_copy(
+    path = here::here(
+      "templates",
+      "quarto-yaml",
+      quarto_yml_file),
+    new_path = here::here("_quarto.yml"),
+    overwrite = TRUE
+  )
+  
+  # Render each cohort
+  quarto::quarto_render(
+    as_job = FALSE
+  )
+}
+
+cohort_name <- c("Cohort_A", 
+                 "Cohort_B")
+
+purrr::walk(
+  .x = cohort_name,
+  .f = ~copy_and_render(
+    cohort = .x
+  )
+)
+
+```
+
+:::
+
+::: {.column width="70%"}
+
+![](images/quarto_yml_copy.png){fig-alt="_quarto_Cohort_A.yml file copied and changed to _quarto.qmd" fig-align="center" width="100%"}
+:::
+
+::::
+
+## Automated Technical Report
+
+![](images/technical_report.png){fig-alt="Output of technical report." fig-align="center" width="100%"}
+
+## Automated Summary Report
+
+A similar method is done to create a summary report in word using [`flextable`](https://davidgohel.github.io/flextable/).
+
+![](images/summary_report.png){fig-alt="Preview of summary report." fig-align="center" width="100%"}
