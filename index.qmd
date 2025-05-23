@@ -1138,7 +1138,11 @@ There is a need to automate the creation of these reports.
 
 ## Automated Report Challenge
 
-Collaborator wants different ways to report data harmonisation.
+Collaborator wants different ways to report how data harmonisation is done.
+
+![](images/documentation_types.png){fig-alt="Four major documentation type." fig-align="center" width="87%"}
+
+[The documentation system by [Divio](https://docs.divio.com/documentation-system/){target="_blank"}]{style="font-size: 80%;"}
 
 ## Quarto Books
 
@@ -1160,19 +1164,19 @@ To make a Quarto book or website, we need a `_quarto.yml` and `index.qmd` file
 
 ::::
 
-## Automated Technical Report
+## Automated Technical Report (Reference) (Reference)
 
 We create an `index.qmd` file for technical report generation.
 
 ![](images/index_report_qmd.png){fig-alt="A preview of the index.qmd file for technical reporting." fig-align="center" width="100%"}
 
-## Automated Technical Report
+## Automated Technical Report (Reference)
 
 We create a `_quarto.yml` file and relevant Quarto files for each cohort.
 
 ![](images/report_for_cohort_A.png){fig-alt="A preview of the _quarto.yml and relevant Quarto files for Cohort A." fig-align="center" width="100%"}
 
-## Automated Technical Report
+## Automated Technical Report (Reference)
 
 Create an automated script to generate a technical report in pdf, word and html for each cohort 
 
@@ -1216,7 +1220,7 @@ fs::file_copy(
 
 ::::
 
-## Automated Technical Report
+## Automated Technical Report (Reference)
 
 Create an automated script to generate a technical report in pdf, word and html for each cohort 
 
@@ -1280,12 +1284,31 @@ purrr::walk(
 
 ::::
 
-## Automated Technical Report
+## Automated Technical Report (Reference)
 
 ![](images/technical_report.png){fig-alt="Output of technical report." fig-align="center" width="100%"}
 
-## Automated Summary Report
+## Automated Summary Report (How-to-Guide)
 
 A similar method is done to create a summary report in word using [`flextable`](https://davidgohel.github.io/flextable/).
 
 ![](images/summary_report.png){fig-alt="Preview of summary report." fig-align="center" width="100%"}
+
+## Data Variable Justfication Report (Explanation)
+
+Initially we have `smoke_history` with values 0 (Non-smoker), 1 (past-smoker), 2 (current smoker), -1 (Unknown) but have to change to `smoke_current` and `smoke_past` which holds values 1 (Yes), 0 (No) and -1 (Unknown). 
+
+This is because some collaborators could provide if the patient has a smoking history but could not identify if the patient is a current or past smoker. 
+
+To deal with this case, we convert the `smoke_history` to hold values 1 (Yes), 0 (No) and -1 (Unknown). Set the `smoke_history` value as 1 but set the value of `smoke_current` and `smoke_past` as -1 (Unknown).
+
+We set missing values for categorical variables to be -1 (Unknown) so that some members in analysis team which uses SPSS do not have to manually allocate missing values for a few hundred variables.
+
+## Overview Diagrams (Tutorial)
+
+How many cohorts provide patient's blood lipid information ? What is the total amount of patients with blood lipid information ?
+
+
+
+
+
