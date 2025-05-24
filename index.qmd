@@ -3,6 +3,7 @@ title: Retrospective clinical data harmonisation reporting
 author: Jeremy Selva [`r fontawesome::fa(name = "linkedin", fill = "#0077ac")`](https://www.linkedin.com/in/jeremy-selva-085b9112a/){target="_blank"} <br> @JauntyJJS [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS){target="_blank"} [`r fontawesome::fa(name = "fab fa-square-x-twitter", fill = "#000000")`](https://twitter.com/JauntyJJS){target="_blank"} [`r fontawesome::fa(name = "bluesky", fill = "#1084ff")`](https://bsky.app/profile/jauntyjjs.bsky.social){target="_blank"} [<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5f53e7;overflow:visible;position:relative;"><path d="M433 179.1c0-97.2-63.7-125.7-63.7-125.7-62.5-28.7-228.6-28.4-290.5 0 0 0-63.7 28.5-63.7 125.7 0 115.7-6.6 259.4 105.6 289.1 40.5 10.7 75.3 13 103.3 11.4 50.8-2.8 79.3-18.1 79.3-18.1l-1.7-36.9s-36.3 11.4-77.1 10.1c-40.4-1.4-83-4.4-89.6-54a102.5 102.5 0 0 1 -.9-13.9c85.6 20.9 158.7 9.1 178.8 6.7 56.1-6.7 105-41.3 111.2-72.9 9.8-49.8 9-121.5 9-121.5zm-75.1 125.2h-46.6v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.3V197c0-58.5-64-56.6-64-6.9v114.2H90.2c0-122.1-5.2-147.9 18.4-175 25.9-28.9 79.8-30.8 103.8 6.1l11.6 19.5 11.6-19.5c24.1-37.1 78.1-34.8 103.8-6.1 23.7 27.3 18.4 53 18.4 175z"/></svg>](https://fosstodon.org/@JauntyJJS){target="_blank"} <br> [*https://jeremy-selva.netlify.app* `r fontawesome::fa(name = "link", fill = "#666666")`](https://jeremy-selva.netlify.app/){target="_blank"} <br> For [R/Medicine 2025 `r fontawesome::fa(name = "link", fill = "#666666")`](https://rconsortium.github.io/RMedicine_website/){target="_blank"}
 date: 2025-06-12
 date-format: "D[<sup style='font-size:65%;font-style:italic;'>th</sup>] MMMM YYYY"
+lightbox: true
 format:
   revealjs:
     theme: [custom.scss]
@@ -1323,6 +1324,8 @@ How many cohorts provide patient's blood lipid information ? What is the total a
 #| label: Venn Diagram
 #| echo: false
 #| eval: true
+#| fig-align: center
+#| fig-height: 8
 
 demographic_list <- list(
   A = c("Age", "Sex",
@@ -1448,19 +1451,24 @@ demographic_venn_diagram <- ggplot2::ggplot() +
     data = demographic_venn_label_data,
     mapping = ggplot2::aes(
       x = .data[["X"]], y = .data[["Y"]],
-      label = .data[["Cohort"]])
+      label = .data[["Cohort"]]),
+    size = 5.5
   ) +
   # 4. region label layer
   ggplot2::geom_label(
     data = demographic_venn_regionlabel_data,
     mapping = ggplot2::aes(
       x = .data[["X"]], y = .data[["Y"]],
-      label = .data[["count"]])
+      label = .data[["count"]]),
+    size = 7
   ) +
   ggplot2::scale_x_continuous(
     expand = ggplot2::expansion(mult = 0.2)
   ) +
-  ggplot2::theme_void()
+  ggplot2::theme_void() +
+  ggplot2::theme(
+    text = element_text(size = 20)
+  )
 
 demographic_venn_diagram 
 
@@ -1474,6 +1482,8 @@ demographic_venn_diagram
 #| label: Upset Diagram
 #| echo: false
 #| eval: true
+#| fig-align: center
+#| fig-height: 8
 
 demographic_venn <- tibble::tibble(
   column_name = c("Age", "Sex",
@@ -1530,10 +1540,12 @@ upset_plot <- ComplexUpset::upset(
   base_annotations = list(
     `Intersection size` = 
       ComplexUpset::intersection_size(
+        text = list(size = 9, nudge_y = 0.5),
         text_colors = c(on_background='black', 
                         on_bar='white')
       ) + 
       ggplot2::annotate(
+        size = 5.5,
         geom = 'text', 
         x = Inf, 
         y = Inf,
@@ -1542,23 +1554,34 @@ upset_plot <- ComplexUpset::upset(
         hjust = 1
       ) + 
       ggplot2::theme(
-        axis.title.y = ggplot2::element_text(angle = 0)) +
+        axis.title.y = ggplot2::element_text(angle = 0, size = 20),
+        axis.title.x = ggplot2::element_text(angle = 0, size = 20), 
+        text = element_text(size = 20)
+      ) +
       ggplot2::labs(y = "",
                     title = "Intersection size")
       ),
   set_sizes = ( 
     ComplexUpset::upset_set_size() +
     ggplot2::geom_text(
+      size = 5.5,
       mapping = ggplot2::aes(label= ggplot2::after_stat(.data[["count"]])), 
       hjust = 1.5, 
       stat = 'count') +
-    ggplot2::expand_limits(y = 30) +
+    ggplot2::expand_limits(y = 30) + 
+    ggplot2::theme(
+        axis.title.y = ggplot2::element_text(angle = 0, size = 15),
+        axis.title.x = ggplot2::element_text(angle = 0, size = 15), 
+        text = element_text(size = 15)
+    ) +
     ggplot2::labs(y = "Number of variables")
   ),
   sort_intersections_by = "degree",
   sort_sets = FALSE,
   name = "", 
-  width_ratio = 0.25) |>
+  width_ratio = 0.25,
+  themes = ComplexUpset::upset_default_themes(text = element_text(size = 15)) 
+  ) |>
   print()
 
 ```
