@@ -94,11 +94,31 @@ source("R/rounding.R")
 
 ## Outline
 
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {style="font-size: 130%;"}
+
 Data harmonisation overview strategy
 
-Cover ways to counter small but annoying issues during retrospective data harmonisation.
+Counter small but annoying issues during retrospective data harmonisation.
 
-Suggested reports and diagrams to create for different clients.
+Suggested reports and diagram to create for different clients.
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+![](images/notes.jpg){fig-alt="A picture of a notebook and pen beside a vase of flowers" fig-align="center" width="80%"}
+
+[Photo by [Sixteen Miles Out](https://unsplash.com/@sixteenmilesout?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash){target="_blank"} on [Unsplash](https://unsplash.com/photos/shallow-focus-photo-of-purple-flowers-on-white-spiral-notebook-0I75875sRVU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash){target="_blank"}]{style="font-size: 80%;"}
+
+:::
+
+::::
 
 ## About Retropective Data Harmonisation
 
@@ -1172,17 +1192,17 @@ To make a Quarto book or website, we need a `_quarto.yml` and `index.qmd` file
 
 ::::
 
-## Automated Technical Report (Reference) (Reference)
+## Automated Technical Report (Reference)
 
 We create an `index.qmd` file for technical report generation.
 
-![](images/index_report_qmd.png){fig-alt="A preview of the index.qmd file for technical reporting." fig-align="center" width="100%"}
+![](images/index_report_qmd.png){fig-alt="A preview of the index.qmd file for technical reporting." fig-align="center" width="50%"}
 
 ## Automated Technical Report (Reference)
 
 We create a `_quarto.yml` file and relevant Quarto files for each cohort.
 
-![](images/report_for_cohort_A.png){fig-alt="A preview of the _quarto.yml and relevant Quarto files for Cohort A." fig-align="center" width="100%"}
+![](images/report_for_cohort_A.png){fig-alt="A preview of the _quarto.yml and relevant Quarto files for Cohort A." fig-align="center" width="60%"}
 
 ## Automated Technical Report (Reference)
 
@@ -1294,27 +1314,39 @@ purrr::walk(
 
 ## Automated Technical Report (Reference)
 
-![](images/technical_report.png){fig-alt="Output of technical report." fig-align="center" width="100%"}
+![](images/technical_report.png){fig-alt="Output of technical report." fig-align="center" width="80%"}
 
 ## Automated Summary Report (How-to-Guide)
 
 A similar method is done to create a summary report in word using [`flextable`](https://davidgohel.github.io/flextable/).
 
-![](images/summary_report.png){fig-alt="Preview of summary report." fig-align="center" width="100%"}
+![](images/summary_report.png){fig-alt="Preview of summary report." fig-align="center" width="80%"}
 
 ## Data Variable Justfication Report (Explanation)
 
-Initially we have `smoke_history` with values 0 (Non-smoker), 1 (past-smoker), 2 (current smoker), -1 (Unknown) but have to change to `smoke_current` and `smoke_past` which holds values 1 (Yes), 0 (No) and -1 (Unknown). 
+. . .
 
-This is because some collaborators could provide if the patient has a smoking history but could not identify if the patient is a current or past smoker. 
+Initially we have `smoke_history` with values 0 (Non-smoker), 1 (past-smoker), 2 (current smoker), -1 (Unknown) but have to change to `smoke_current` and `smoke_past` which holds values 1 (Yes), 0 (No) and -1 (Unknown).
+
+. . .
+
+This is because some collaborators could provide if the patient has a smoking history but could not identify if the patient is a current or past smoker.
+
+. . .
 
 To deal with this case, we convert the `smoke_history` to hold values 1 (Yes), 0 (No) and -1 (Unknown). Set the `smoke_history` value as 1 but set the value of `smoke_current` and `smoke_past` as -1 (Unknown).
 
+. . .
+
 We set missing values for categorical variables to be -1 (Unknown) so that some members in analysis team which uses SPSS do not have to manually allocate missing values for a few hundred variables.
 
-## Overview Diagrams (Tutorial)
+. . .
 
-How many cohorts provide patient's blood lipid information ? What is the total amount of patients with blood lipid information ?
+## Overview Diagrams
+
+Each cohort can provide how many variables ? 
+
+How many variables can be harmonised ?
 
 :::: {.columns}
 
@@ -1322,60 +1354,37 @@ How many cohorts provide patient's blood lipid information ? What is the total a
 
 ```{r}
 #| label: Venn Diagram
-#| echo: false
+#| echo: true
 #| eval: true
-#| fig-align: center
-#| fig-height: 8
+#| output: false
 
 demographic_list <- list(
   A = c("Age", "Sex",
-                 "Hypertension", "Dyslipidemia", "Family Hx CAD", "Diabetes",
-                 "Smoke Current", "Smoke Past",
-                 "Have Chest Pain", "Chest Pain Character",
-                 "Dyspnea",
-                 "BMI", "Height", "Weight"),
+        "Hypertension", "Dyslipidemia", "Family Hx CAD", "Diabetes",
+        "Smoke Current", "Smoke Past",
+        "Have Chest Pain", "Chest Pain Character",
+        "Dyspnea",
+        "BMI", "Height", "Weight"),
   B = c("Age", "Sex",
-                 "Hypertension", "Dyslipidemia", "Family Hx CAD", "Diabetes",
-                 "Smoke Current", "Smoke Past",
-                 "Have Chest Pain", "Chest Pain Character",
-                 "Dyspnea",
-                 "HDL", "Total Cholesterol", 
-                 "Triglyceride", "LDL"),
+        "Hypertension", "Dyslipidemia", "Family Hx CAD", "Diabetes",
+        "Smoke Current", "Smoke Past",
+        "Have Chest Pain", "Chest Pain Character",
+        "Dyspnea",
+        "HDL", "Total Cholesterol", 
+        "Triglyceride", "LDL"),
   C = c("Age", "Sex",
-                 "Hypertension", "Dyslipidemia", "Family Hx CAD", "Diabetes",
-                 "Smoke Current", "Smoke Past",
-                 "Have Chest Pain", "Chest Pain Character",
-                 "Dyspnea",
-                 "BMI", "Height", "Weight",
-                 "HDL", "Total Cholesterol", 
-                 "Triglyceride", "LDL")
-  # D = c("Age", "Sex",
-  #                "Hypertension", "Dyslipidemia", "Family Hx CAD", "Diabetes",
-  #                "Smoke Current", "Smoke Past",
-  #                "Have Chest Pain", "Chest Pain Character",
-  #                "BMI",
-  #                "HDL", "Total Cholesterol", 
-  #                "Triglyceride", "LDL"),
-  # E = c("Age", "Sex",
-  #                "Hypertension", "Dyslipidemia", "Family Hx CAD", "Diabetes",
-  #                "Smoke Current", "Smoke Past",
-  #                "Have Chest Pain", "Chest Pain Character",
-  #                "BMI", "Height", "Weight",
-  #                "HDL", "Total Cholesterol"),
-  # F = c("Age", "Sex",
-  #                "Hypertension", "Dyslipidemia", "Family Hx CAD", "Diabetes",
-  #                "Smoke Current", "Smoke Past",
-  #                "Have Chest Pain", "Chest Pain Character",
-  #                "BMI", "Height", "Weight")
+        "Hypertension", "Dyslipidemia", "Family Hx CAD", "Diabetes",
+        "Smoke Current", "Smoke Past",
+        "Have Chest Pain", "Chest Pain Character",
+        "Dyspnea",
+        "BMI", "Height", "Weight",
+        "HDL", "Total Cholesterol", 
+        "Triglyceride", "LDL")
 )  
 
 cohort_a_label_name <- "Cohort A\n(n=1000)"
 cohort_b_label_name <- "Cohort B\n(n=2000)"
 cohort_c_label_name <- "Cohort C\n(n=1500)"
-# cohort_d_label_name <- "Cohort D\n(n=500)"
-# cohort_e_label_name <- "Cohort B\n(n=1000)"
-# cohort_f_label_name <- "Cohort B\n(n=2500)"
-
 
 demographic_venn_data <- demographic_list |> 
   RVenn::Venn() |> 
@@ -1403,9 +1412,6 @@ demographic_venn_label_data <- demographic_venn_data |>
       "A" ~ cohort_a_label_name,
       "B" ~ cohort_b_label_name,
       "C" ~ cohort_c_label_name
-      # "D" ~ cohort_d_label_name,
-      # "E" ~ cohort_e_label_name,
-      # "F" ~ cohort_f_label_name,
     )
   ) |> 
   dplyr::rename(`Cohort` = "name")
@@ -1470,8 +1476,6 @@ demographic_venn_diagram <- ggplot2::ggplot() +
     text = element_text(size = 20)
   )
 
-demographic_venn_diagram 
-
 ```
 
 :::
@@ -1479,11 +1483,35 @@ demographic_venn_diagram
 ::: {.column width="50%"}
 
 ```{r}
-#| label: Upset Diagram
-#| echo: false
-#| eval: true
-#| fig-align: center
+#| label: Venn Diagram Show
 #| fig-height: 8
+#| fig-align: center
+#| fig-alt: |
+#|   An venn diagram showing common variables within six cohorts
+
+demographic_venn_diagram 
+
+```
+
+:::
+
+::::
+
+But it does not work for many (> 10) cohorts.
+
+## Overview Diagrams
+
+Upset plots are too complicated for clinicians.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: Upset Diagram
+#| echo: true
+#| eval: true
+#| output: false
 
 demographic_venn <- tibble::tibble(
   column_name = c("Age", "Sex",
@@ -1517,26 +1545,59 @@ demographic_venn <- tibble::tibble(
                  1,
                  1, 1, 1,
                  1, 1, 
-                 1, 1)
+                 1, 1),
+  `Cohort D` = c(1, 1,
+                 1, 1, 1, 1,
+                 1, 1,
+                 1, 1,
+                 0,
+                 1, 0, 0,
+                 1, 1, 
+                 1, 1),
+  `Cohort E` = c(1, 1,
+                 1, 1, 1, 1,
+                 1, 1,
+                 1, 1,
+                 0,
+                 1, 1, 1,
+                 1, 1, 
+                 0, 0),
+  `Cohort F` = c(1, 1,
+                 1, 1, 1, 1,
+                 1, 1,
+                 1, 1,
+                 0,
+                 1, 1, 1,
+                 0, 0, 
+                 0, 0),
 )
 
 cohort_a_upset_col_name <- "Cohort A\n(n=1000)"
 cohort_b_upset_col_name <- "Cohort B\n(n=2000)"
 cohort_c_upset_col_name <- "Cohort C\n(n=1500)"
+cohort_d_upset_col_name <- "Cohort D\n(n=500)"
+cohort_e_upset_col_name <- "Cohort E\n(n=1000)"
+cohort_f_upset_col_name <- "Cohort F\n(n=2500)"
 
 
 demographic_upset_data <- demographic_venn |>
   dplyr::rename(
     !!cohort_a_upset_col_name := "Cohort A",
     !!cohort_b_upset_col_name := "Cohort B",
-    !!cohort_c_upset_col_name := "Cohort C"
+    !!cohort_c_upset_col_name := "Cohort C",
+    !!cohort_d_upset_col_name := "Cohort D",
+    !!cohort_e_upset_col_name := "Cohort E",
+    !!cohort_f_upset_col_name := "Cohort F"
   )
 
 upset_plot <- ComplexUpset::upset(
   demographic_upset_data,
   c(cohort_a_upset_col_name, 
     cohort_b_upset_col_name, 
-    cohort_c_upset_col_name),
+    cohort_c_upset_col_name,
+    cohort_d_upset_col_name,
+    cohort_e_upset_col_name,
+    cohort_f_upset_col_name),
   base_annotations = list(
     `Intersection size` = 
       ComplexUpset::intersection_size(
@@ -1580,13 +1641,61 @@ upset_plot <- ComplexUpset::upset(
   sort_sets = FALSE,
   name = "", 
   width_ratio = 0.25,
-  themes = ComplexUpset::upset_default_themes(text = element_text(size = 15)) 
-  ) |>
-  print()
+  themes = ComplexUpset::upset_default_themes(text = element_text(size = 15))
+  )
 
 ```
 
 :::
 
+::: {.column width="50%"}
+
+```{r}
+#| label: Upset Diagram Print
+#| fig-height: 8
+#| fig-align: center
+#| fig-alt: |
+#|   An upset plot showing common variables within six cohorts
+
+upset_plot |>
+  print()
+ 
+```
+
+:::
+
+Cannot answer follow-up questions:
+
+How many cohorts provide patient's blood lipid information and how many patients have this information ? 
+
 ::::
 
+## Overview Diagrams
+
+Create a "heatmap"using Microsoft PowerPoint.
+
+![](images/suggested_heatmap.png){fig-alt="A modified heatmap to show command variables." fig-align="center" width="100%"}
+
+## Summary
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](images/data_harmonisation_smaller.png){fig-alt="The data harmonization process: Study data variables collected from different sources need to be mapped to one another, classified into the generalized concepts they represent, and transformed into unified harmonized variables for analysis" fig-align="center" width="100%" .fragment}
+
+![](images/variable_mapping_workflow.png){fig-alt="Variable Mapping Reporting Workflow. Starting with introducing the mapping procedure, writing code to do mapping ans validation, showing that the code works, clean up data for merging." fig-align="center" width="100%" .fragment}
+
+:::
+
+::: {.column width="50%"}
+
+<!-- ![](images/summary_report.png){fig-alt="Preview of summary report." fig-align="center" width="100%"} -->
+
+![](images/documentation_types.png){fig-alt="Four major documentation type." fig-align="center" width="100%" .fragment}
+
+![](images/suggested_heatmap.png){fig-alt="A modified heatmap to show command variables." fig-align="center" width="100%" .fragment}
+
+:::
+
+::::
