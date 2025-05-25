@@ -275,6 +275,8 @@ High risk of getting blame should things don't go well.
 
 ## Harmonisation Template
 
+<https://jauntyjjs.github.io/harmonisation/>
+
 ```{=html}
 <iframe width="1000" height="580" src="https://jauntyjjs.github.io/harmonisation/" title="Harmonisation template" ></iframe>
 ```
@@ -2002,6 +2004,35 @@ Create a "heatmap"using Microsoft PowerPoint.
 ![](images/documentation_types.png){fig-alt="Four major documentation type." fig-align="center" width="100%" .fragment}
 
 ![](images/suggested_heatmap.png){fig-alt="A modified heatmap to show command variables." fig-align="center" width="100%" .fragment}
+
+:::
+
+::::
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
+## Thank you
+
+:::: {.columns}
+
+Harmonisation template on Github: <https://github.com/JauntyJJS/harmonisation/>{target="_blank"}
+
+::: {.column width="50%"}
+
+![](images/data_harmonisation_github_page.png){fig-alt="Data harmonisation project template on Github." fig-align="center" width="100%"}
+
+:::
+
+::: {.column width="50%"}
+
+![](images/198-feature-complete.png){fig-alt="Comic from Monkeyuser.com showing a lot of work needs to be done after adding a new feature." fig-align="center" width="80%"}
+
+[[Feature Complete](https://www.monkeyuser.com/2020/feature-complete/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}]{style="font-size: 80%;"}
 
 :::
 
