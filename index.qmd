@@ -100,6 +100,13 @@ Research Officer from [National Heart Centre Singapore](https://www.nhcs.com.sg/
 
 [Taming the Data Beast from ["Cleaning Medical Data with R"](https://www.pipinghotdata.com/workshops/2023-06-06-cleaning-medical-data-with-r/){target="_blank"} workshop by Shannon Pileggi, Crystal Lewis and Petter Higgins presented at R/Medicine 2023. Illustrated by [Allison Horst](https://allisonhorst.com/){target="_blank"}]{style="font-size: 80%;"}.
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Outline
 
 :::: {.columns}
@@ -128,11 +135,25 @@ Suggested reports and diagram to create for different clients.
 
 ::::
 
-## About Retropective Data Harmonisation
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
+## About Data Harmonisation
 
 ![](images/data_harmonisation.png){fig-alt="The data harmonization process: Study data variables collected from different sources need to be mapped to one another, classified into the generalized concepts they represent, and transformed into unified harmonized variables for analysis" fig-align="center" width="100%"}
 
-[Images from Mallya et al. Circ Cardiovasc Qual Outcomes. 2023 Nov; 16(11):e009938 doi: [10.1161/CIRCOUTCOMES.123.009938](https://doi.org/10.1161/CIRCOUTCOMES.123.009938){target="_blank"}]{style="font-size: 80%;"}.
+[Image from Mallya et al. Circ Cardiovasc Qual Outcomes. 2023 Nov; 16(11):e009938 doi: [10.1161/CIRCOUTCOMES.123.009938](https://doi.org/10.1161/CIRCOUTCOMES.123.009938){target="_blank"}]{style="font-size: 80%;"}.
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Tasks
 
@@ -146,6 +167,13 @@ Here is a summary of my task for an international study.
 <!-- *  Harmonise data provided from each collaborator. -->
 <!-- *  Return to collaborator harmonised dataset with a report of how data is harmonised. -->
 <!-- *  Merge data for all cohorts together and send to an analysis team for analysis. -->
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Why Retropective Data Harmonisation ?
 
@@ -172,6 +200,13 @@ Data provided may have issues that needs relevant experience and may be hard to 
 :::
 
 ::::
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Issues
 
@@ -201,6 +236,13 @@ R packages related to data harmonisation
 
 ::::
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Issues
 
 High risk of getting blame should things don't go well.
@@ -224,11 +266,25 @@ High risk of getting blame should things don't go well.
 
 ::::
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Harmonisation Template
 
 ```{=html}
 <iframe width="1000" height="580" src="https://jauntyjjs.github.io/harmonisation/" title="Harmonisation template" ></iframe>
 ```
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Automated capture of warnings (csv)
 
@@ -270,6 +326,13 @@ head(cohort_data_csv, n = 3)
 
 ::::
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Automated capture of warnings (csv)
 
 If there are issues with the data, the output of [`vroom::problems`](https://vroom.r-lib.org/reference/problems.html){target="_blank"} will be a tibble.
@@ -296,6 +359,13 @@ cohort_data_csv |>
   pointblank::expect_row_count_match(count = 0)
 
 ```
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Automated capture of warnings (csv)
 
@@ -348,6 +418,13 @@ cohort_data_csv |>
 
 ::::
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Automated capture of warnings (Excel)
 
 Is there an automated way to catch warnings/issues when reading Excel ?
@@ -374,6 +451,13 @@ cohort_data_excel <- readxl::read_excel(
 ::: {.column width="50%"}
 
 ![](images/age_issue_excel.jpg){fig-alt="An Excel file with text data in the Age column." fig-align="center" width="100%"}
+
+:::
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
 
 :::
 
@@ -410,6 +494,13 @@ testthat::expect_no_condition(
 :::
 
 ::::
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Automated capture of warnings (Excel)
 
@@ -448,6 +539,13 @@ cohort_data_excel <- cohort_data_excel |>
 :::
 
 ::::
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Automated capture of warnings (Excel)
 
@@ -509,9 +607,23 @@ testthat::expect_no_condition() |>
 
 ::::
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Variable Mapping
 
 ![](images/variable_mapping_workflow.png){fig-alt="Variable Mapping Reporting Workflow. Starting with introducing the mapping procedure, writing code to do mapping ans validation, showing that the code works, clean up data for merging." fig-align="center" width="100%"}
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Variable Mapping
 
@@ -595,11 +707,25 @@ cohort_csv_data |>
 
 ::::
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Variable Mapping
 
 Let the reader know how the collaborator data `Smoke History` is going to be mapped.
 
 ![](images/mapping_procedure.png){fig-alt="Documentation indicating how the collaborator's data Smoke History is going to be mapped or harmonised in Quarto code and output." fig-align="center" width="100%"}
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Variable Mapping
 
@@ -655,6 +781,13 @@ smoking_data <- cohort_csv_data |>
 
 ::::
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Variable Mapping
 
 ![](images/code_to_validate.png){fig-alt="Code to do validation." fig-align="center" width="30%"}
@@ -665,6 +798,7 @@ smoking_data <- cohort_csv_data |>
 
 ```{r}
 #| label: smoking data validation
+#| code-line-numbers: "|2-5|6-12"
 #| echo: true
 
 smoking_data <- smoking_data |>
@@ -693,6 +827,13 @@ smoking_data <- smoking_data |>
 ::::
 
 [Reference: <https://github.com/rstudio/pointblank/issues/578>]{style="font-size: 80%;"}
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Variable Mapping
 
@@ -727,6 +868,13 @@ smoking_data |>
 
 ::::
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Variable Mapping
 
 :::: {.columns}
@@ -750,6 +898,13 @@ smoking_data |>
 :::
 
 ::::
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Variable Mapping
 
@@ -787,9 +942,16 @@ smoking_data |>
 
 ::::
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Merging Harmonised Data
 
-Supposed we have completed harmonising a batch of clinical data. How can we merge them without issues of missing rows or additional columns ?
+Supposed we have completed harmonising a batch of clinical data.
 
 :::: {.columns}
 
@@ -908,6 +1070,15 @@ body_measurement_data |>
 
 ::::
 
+How can we merge them without issues of missing rows or additional columns ?
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Merging Harmonised Data
 
 `unmatched = "error"` in [`dplyr::left_join`](https://dplyr.tidyverse.org/reference/mutate-joins.html){target="_blank"} helps to avoid patients with no match.
@@ -949,7 +1120,7 @@ demo_behave_data <- cohort_csv_data |>
 ```{r}
 #| label: penguin error
 #| echo: true
-#| code-line-numbers: "|5,12,19"
+#| code-line-numbers: "|3-5,12,19"
 #| warning: true
 #| error: true
 
@@ -981,6 +1152,13 @@ three_penguins |>
 ::::
 
 [Reference: <https://www.tidyverse.org/blog/2023/08/teach-tidyverse-23/#improved-and-expanded-_join-functionality>]{style="font-size: 80%;"}
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Merging Harmonised Data
 
@@ -1023,7 +1201,7 @@ demo_behave_data <- cohort_csv_data |>
 ```{r}
 #| label: penguin error 2
 #| echo: true
-#| code-line-numbers: "|5,11,12,20"
+#| code-line-numbers: "|4,11,12,20"
 #| warning: true
 #| error: true
 
@@ -1056,6 +1234,13 @@ three_penguins |>
 ::::
 
 [Reference: <https://www.tidyverse.org/blog/2023/08/teach-tidyverse-23/#improved-and-expanded-_join-functionality>]{style="font-size: 80%;"}
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Merging Harmonised Data 
 
@@ -1145,34 +1330,60 @@ colnames(three_penguins)
 
 ::::
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Automated Report Challenge
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
+:::{.fragment}
+
 One variable mapping report takes at least one page.
+
+:::
+
+:::{.fragment}
 
 On average, a clinical trial will have a few hundred variables.
 
 * [One hundred columns for clinical and demographics.]{style="font-size: 80%;"}
 * [Two hundred columns for medication.]{style="font-size: 80%;"}
 
-Harmonisation report can have at least a few hundreds pages for each cohort. 
+:::
+
+:::{.fragment}
+
+Harmonisation report can have at least a few hundreds pages for each cohort.
 
 There is a need to automate the creation of these reports.
 
 :::
 
+:::
+
 ::: {.column width="50%"}
 
-![](images/overload.jpg){fig-alt="Businessman in pile of documents asking for help, over workload." fig-align="center" width="87%"}
+![](images/overload.jpg){fig-alt="Businessman in pile of documents asking for help." fig-align="center" width="87%"}
 
-[Businessman in pile of documents asking for help, over workload by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464741-businessman-in-pile-of-documents-asking-for-help-over-workload){target="_blank"}]{style="font-size: 80%;"}
+[Businessman in pile of documents asking for help by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464741-businessman-in-pile-of-documents-asking-for-help-over-workload){target="_blank"}]{style="font-size: 80%;"}
 
 :::
 
 ::::
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Automated Report Challenge
 
@@ -1181,6 +1392,13 @@ Collaborator wants different ways to report how data harmonisation is done.
 ![](images/documentation_types.png){fig-alt="Four major documentation type." fig-align="center" width="70%"}
 
 [The documentation system by [Divio](https://docs.divio.com/documentation-system/){target="_blank"}]{style="font-size: 80%;"}
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Quarto Books
 
@@ -1202,17 +1420,38 @@ To make a Quarto book or website, we need a `_quarto.yml` and `index.qmd` file
 
 ::::
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Automated Technical Report (Reference)
 
 We create an `index.qmd` file for technical report generation.
 
 ![](images/index_report_qmd.png){fig-alt="A preview of the index.qmd file for technical reporting." fig-align="center" width="50%"}
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Automated Technical Report (Reference)
 
 We create a `_quarto.yml` file and relevant Quarto files for each cohort.
 
 ![](images/report_for_cohort_A.png){fig-alt="A preview of the _quarto.yml and relevant Quarto files for Cohort A." fig-align="center" width="60%"}
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Automated Technical Report (Reference)
 
@@ -1257,6 +1496,13 @@ fs::file_copy(
 :::
 
 ::::
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Automated Technical Report (Reference)
 
@@ -1322,9 +1568,23 @@ purrr::walk(
 
 ::::
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Automated Technical Report (Reference)
 
 ![](images/technical_report.png){fig-alt="Output of technical report." fig-align="center" width="80%"}
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Automated Summary Report (How-to-Guide)
 
@@ -1332,25 +1592,41 @@ A similar method is done to create a summary report in word using [`flextable`](
 
 ![](images/summary_report.png){fig-alt="Preview of summary report." fig-align="center" width="85%"}
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Data Variable Justfication Report (Explanation)
 
-. . .
+Initially we have `smoke_history` with values 0 (Non-smoker), 1 (past-smoker), 2 (current smoker) and -1 (Unknown).
 
-Initially we have `smoke_history` with values 0 (Non-smoker), 1 (past-smoker), 2 (current smoker), -1 (Unknown) but have to change to `smoke_current` and `smoke_past` which holds values 1 (Yes), 0 (No) and -1 (Unknown).
+However, in the early stage of the study, some collaborators could only provide if the patient has a smoking history but could not specify if the patient is a current or past smoker.
 
-. . .
+![](images/smoke_data_dictionary_previous.png){fig-alt="Column smoke_history with values 0 for non smoker, 1 for past-smoker, 2 for current smoker, -1 for unknown." fig-align="center" width="70%"}
 
-This is because some collaborators could provide if the patient has a smoking history but could not identify if the patient is a current or past smoker.
+::: footer
 
-. . .
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
 
-To deal with this case, we convert the `smoke_history` to hold values 1 (Yes), 0 (No) and -1 (Unknown). Set the `smoke_history` value as 1 but set the value of `smoke_current` and `smoke_past` as -1 (Unknown).
+:::
 
-. . .
 
-We set missing values for categorical variables to be -1 (Unknown) so that some members in the analysis team who uses SPSS do not have to manually allocate missing values for a few hundred variables.
+## Data Variable Justfication Report (Explanation)
 
-. . .
+To deal with this case, we have `smoke_history`, `smoke_current` and `smoke_past` to hold values 1 (Yes), 0 (No) and -1 (Unknown).
+
+![](images/smoke_data_dictionary.png){fig-alt="Smoking history issue fixed by having smoke_history, smoke_current and smoke_past to hold values 1 for Yes, 0 for No and -1 for Unknown." fig-align="center" width="80%"}
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Overview Diagrams
 
@@ -1508,6 +1784,13 @@ demographic_venn_diagram
 ::::
 
 But it does not work for many (> 10) cohorts.
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Overview Diagrams
 
@@ -1680,11 +1963,25 @@ How many cohorts provide patient's blood lipid information and how many patients
 
 ::::
 
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
 ## Overview Diagrams
 
 Create a "heatmap"using Microsoft PowerPoint.
 
 ![](images/suggested_heatmap.png){fig-alt="A modified heatmap to show command variables." fig-align="center" width="100%"}
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
 
 ## Summary
 
@@ -1709,3 +2006,10 @@ Create a "heatmap"using Microsoft PowerPoint.
 :::
 
 ::::
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
