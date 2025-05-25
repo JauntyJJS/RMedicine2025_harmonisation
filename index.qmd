@@ -738,7 +738,7 @@ Let the reader know how the collaborator data `Smoke History` is going to be map
 ```{r}
 #| label: smoking data harmonisation
 #| echo: true
-#| code-line-numbers: "|2,3|5-14"
+#| code-line-numbers: "|2,3|5-14|15-24"
 
 smoking_data <- cohort_csv_data |>
   dplyr::select(c("cohort_unique_id", 
