@@ -149,7 +149,9 @@ Here is a summary of my task for an international study.
 
 ## Why Retropective Data Harmonisation ?
 
-Collaborators may not have resources (time/funding) to match their data to your data dictionary and input template. Data provided may have issues that needs relevant experience and may be hard to solve.
+Collaborators may not have resources (time/funding) to match their data to your data dictionary and input template. 
+
+Data provided may have issues that needs relevant experience and may be hard to solve.
 
 :::: {.columns}
 
