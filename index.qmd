@@ -18,31 +18,31 @@ format:
     transition: fade
     background-transition: fade
     highlight-style: breeze
-    # logo: images/qr.png
+    logo: images/qr.png
     pointer:
       pointerSize: 24
       color: '#32cd32'
     include-after-body: no_logo_at_title_slide.js
-    # include-in-header: 
-    #   text: |
-    #     <meta name="github-repo" content="JauntyJJS/rugs_20241129" />
-    #     <meta name="twitter:title" content="Introduction to Quarto Dashboards" />
-    #     <meta name="twitter:description" content="Presentation for R User Group Singapore Meetup on 29 November 2024." />
-    #     <meta name="twitter:url" content="https://jauntyjjs.github.io/rugs_20241129" />
-    #     <meta name="twitter:image" content="https://raw.githubusercontent.com/JauntyJJS/rugs_20241129/main/share-card.png" />
-    #     <meta name="twitter:image:alt" content="Title slide of Introduction to Quarto Dashboards presented at R User Group Singapore Meetup on 29 November 2024." />
-    #     <meta name="twitter:card" content="summary_large_image" />
-    #     <meta name="twitter:creator" content="@JauntyJJS" />
-    #     <meta name="twitter:site" content="@JauntyJJS" />
-    #     <meta property="og:title" content="Introduction to Quarto Dashboards" />
-    #     <meta property="og:description" content="Presentation for R User Group Singapore Meetup on 29 November 2024." />
-    #     <meta property="og:url" content="https://jauntyjjs.github.io/rugs_20241129" />
-    #     <meta property="og:image" content="https://raw.githubusercontent.com/JauntyJJS/rugs_20241129/main/share-card.png" />
-    #     <meta property="og:image:alt" content="Title slide of Introduction to Quarto Dashboards presented at R User Group Singapore Meetup on 29 November 2024." />
-    #     <meta property="og:site_name" content="R User Group Singapore Meetup on 29 November 2024" />
-    #     <meta property="og:type" content="website" />
-    #     <meta property="og:locale" content="en_UK" />
-    #     <meta property="article:author" content="Jeremy Selva" />
+    include-in-header:
+      text: |
+        <meta name="github-repo" content="JauntyJJS/RMedicine2025_harmonisation />
+        <meta name="twitter:title" content="Retrospective clinical data harmonisation reporting" />
+        <meta name="twitter:description" content="Presentation for R/Medicine 2025." />
+        <meta name="twitter:url" content="https://jauntyjjs.github.io/RMedicine2025_harmonisation/" />
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/share-card.png" />
+        <meta name="twitter:image:alt" content="Title slide of Retrospective clinical data harmonisation reporting presented at R/Medicine 2025." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@JauntyJJS" />
+        <meta name="twitter:site" content="@JauntyJJS" />
+        <meta property="og:title" content="Retrospective clinical data harmonisation reporting" />
+        <meta property="og:description" content="Presentation for R/Medicine 2025." />
+        <meta property="og:url" content="https://jauntyjjs.github.io/RMedicine2025_harmonisation/" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/share-card.png" />
+        <meta property="og:image:alt" content="Title slide of Retrospective clinical data harmonisation reporting presented at R/Medicine 2025." />
+        <meta property="og:site_name" content="R/Medicine 2025" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_UK" />
+        <meta property="article:author" content="Jeremy Selva" />
 revealjs-plugins:
   - pointer
 filters:
@@ -91,6 +91,14 @@ source("R/integer-check.R")
 source("R/rounding.R")
 
 ```
+
+## whoami
+
+Research Officer from [National Heart Centre Singapore](https://www.nhcs.com.sg/){target="_blank"} who collects, cleans and harmonises clinical data.
+
+![](images/allison_horst2.png){fig-alt="Picture by Allison Horst about a data analyst facing a dataset in the form of a monster." fig-align="center" width="70%"}
+
+[Taming the Data Beast from ["Cleaning Medical Data with R"](https://www.pipinghotdata.com/workshops/2023-06-06-cleaning-medical-data-with-r/){target="_blank"} workshop by Shannon Pileggi, Crystal Lewis and Petter Higgins presented at R/Medicine 2023. Illustrated by [Allison Horst](https://allisonhorst.com/){target="_blank"}]{style="font-size: 80%;"}.
 
 ## Outline
 

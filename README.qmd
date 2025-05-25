@@ -1,0 +1,8 @@
+---
+title: Retrospective clinical data harmonisation reporting
+format: gfm
+---
+
+Here are the [source code](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} for my [slides](https://jauntyjjs.github.io/RMedicine2025_harmonisation/){target="_blank"} presented at [R/Medicine 2025](https://rconsortium.github.io/RMedicine_website/){target="_blank"}.
+
+![](share-card.png){fig-alt="Title slide of Retrospective clinical data harmonisation reporting presented at R/Medicine 2025." fig-align="center"}
