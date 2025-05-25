@@ -278,7 +278,7 @@ High risk of getting blame should things don't go well.
 <https://jauntyjjs.github.io/harmonisation/>
 
 ```{=html}
-<iframe width="1000" height="550" src="https://jauntyjjs.github.io/harmonisation/" title="Harmonisation template" ></iframe>
+<iframe width="1000" height="500" src="https://jauntyjjs.github.io/harmonisation/" title="Harmonisation template" ></iframe>
 ```
 
 ::: footer
