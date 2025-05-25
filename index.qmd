@@ -1176,7 +1176,7 @@ There is a need to automate the creation of these reports.
 
 Collaborator wants different ways to report how data harmonisation is done.
 
-![](images/documentation_types.png){fig-alt="Four major documentation type." fig-align="center" width="87%"}
+![](images/documentation_types.png){fig-alt="Four major documentation type." fig-align="center" width="80%"}
 
 [The documentation system by [Divio](https://docs.divio.com/documentation-system/){target="_blank"}]{style="font-size: 80%;"}
 
