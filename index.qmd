@@ -1328,7 +1328,7 @@ purrr::walk(
 
 A similar method is done to create a summary report in word using [`flextable`](https://davidgohel.github.io/flextable/).
 
-![](images/summary_report.png){fig-alt="Preview of summary report." fig-align="center" width="80%"}
+![](images/summary_report.png){fig-alt="Preview of summary report." fig-align="center" width="85%"}
 
 ## Data Variable Justfication Report (Explanation)
 
@@ -1346,7 +1346,7 @@ To deal with this case, we convert the `smoke_history` to hold values 1 (Yes), 0
 
 . . .
 
-We set missing values for categorical variables to be -1 (Unknown) so that some members in analysis team which uses SPSS do not have to manually allocate missing values for a few hundred variables.
+We set missing values for categorical variables to be -1 (Unknown) so that some members in the analysis team who uses SPSS do not have to manually allocate missing values for a few hundred variables.
 
 . . .
 
