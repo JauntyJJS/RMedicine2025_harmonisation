@@ -18,7 +18,7 @@ format:
     transition: fade
     background-transition: fade
     highlight-style: breeze
-    logo: images/qr.png
+    # logo: images/qr.png
     pointer:
       pointerSize: 24
       color: '#32cd32'
@@ -290,7 +290,7 @@ High risk of getting blame should things don't go well.
 
 ## Automated capture of warnings (csv)
 
-When reading files in batches or the same file but in a different version, is there an automated way to catch warnings/issues when reading csv ?
+When reading files in batches or the same file but in a different version, is there an automated way to catch warnings/issues when reading csv files ?
 
 :::: {.columns}
 
@@ -349,7 +349,7 @@ cohort_data_csv |>
 
 ```
 
-To check for this in an automatically, we can use [`pointblank::expect_row_count_match`](https://rstudio.github.io/pointblank/reference/row_count_match.html){target="_blank"}.
+To check for this automatically, we can use [`pointblank::expect_row_count_match`](https://rstudio.github.io/pointblank/reference/row_count_match.html){target="_blank"}.
 
 ```{r}
 #| label: safeguard problem with vroom and pointblank
@@ -429,7 +429,7 @@ cohort_data_csv |>
 
 ## Automated capture of warnings (Excel)
 
-Is there an automated way to catch warnings/issues when reading Excel ?
+Is there an automated way to catch warnings/issues when reading Excel files ?
 
 ::: {.column width="50%"}
 
@@ -1164,7 +1164,7 @@ three_penguins |>
 
 ## Merging Harmonised Data
 
-`relationship = "one-to-one` in [`dplyr::left_join`](https://dplyr.tidyverse.org/reference/mutate-joins.html){target="_blank"} helps to avoid patients with multiple match.
+`relationship = "one-to-one"` in [`dplyr::left_join`](https://dplyr.tidyverse.org/reference/mutate-joins.html){target="_blank"} helps to avoid patients with multiple match.
 
 :::: {.columns}
 
@@ -1246,7 +1246,7 @@ three_penguins |>
 
 ## Merging Harmonised Data 
 
-Use [`pointblank::has_columns`](https://rstudio.github.io/pointblank/reference/has_columns.html){target="_blank"} to ensure we also have harmonised variables.
+Use [`pointblank::has_columns`](https://rstudio.github.io/pointblank/reference/has_columns.html){target="_blank"} to ensure we only have harmonised variables.
 
 :::: {.columns}
 
