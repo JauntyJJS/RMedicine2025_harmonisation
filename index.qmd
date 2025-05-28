@@ -264,8 +264,7 @@ R packages related to data harmonisation
 [`psHarmonize`](https://github.com/NUDACC/psHarmonize){target="_blank"} variable harmonisation process is reported in a Microsoft Excel file. Works for variables with simple harmonisation process.
 
 ![](images/psHarmonise.png){fig-alt="Harmonisation report from psHarmonise in an excel file." fig-align="center" width="100%"}
-
-Report in Microsoft Excel is hard to read if harmonisation process is complicated. 
+[Image from Stephen et al. Patterns (N Y). 2024 Jun; 5(8):101003 doi: [10.1016/j.patter.2024.101003](https://10.1016/j.patter.2024.101003){target="_blank"}]{style="font-size: 80%;"}.
 
 :::
 
@@ -279,6 +278,7 @@ Report in Microsoft Excel is hard to read if harmonisation process is complicate
 ## Issues
 
 Collaborator wants transparency on how the data is processed.
+
 High risk of getting blame should things don't go well.
 
 :::: {.columns}
@@ -988,7 +988,7 @@ smoking_data |>
 
 ## Merging Harmonised Data
 
-Supposed we have completed harmonising a batch of clinical data.
+Suppose we have completed harmonising a batch of clinical data.
 
 :::: {.columns}
 
@@ -2055,7 +2055,7 @@ Create a "heatmap"using Microsoft PowerPoint.
 
 :::: {.columns}
 
-Harmonisation project template on Github: <https://github.com/JauntyJJS/harmonisation/>{target="_blank"}
+Harmonisation project template on GitHub: <https://github.com/JauntyJJS/harmonisation/>{target="_blank"}
 
 ::: {.column width="50%"}
 
