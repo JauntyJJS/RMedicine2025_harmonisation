@@ -18,7 +18,7 @@ format:
     transition: fade
     background-transition: fade
     highlight-style: breeze
-    # logo: images/qr.png
+    logo: images/qr.png
     pointer:
       pointerSize: 24
       color: '#32cd32'
@@ -210,21 +210,9 @@ Data provided may have issues that needs relevant experience and may be hard to 
 
 ## Issues
 
-Limited resources on how to do data harmonisation and to make a report out of this. 
-
-<!-- Many just focus on data management as a whole and offer a high level overivew of data harmonisation. -->
+Limited resources on how to do data harmonisation and to make a report.
 
 :::: {.columns}
-
-::: {.column width="50%"}
-
-R packages related to data harmonisation
-
-*  [`retroharmonize`](https://github.com/rOpenGov/retroharmonize/){target="_blank"}
-*  [`psHarmonize`](https://github.com/NUDACC/psHarmonize){target="_blank"}
-*  [`ltertools`](https://github.com/lter/ltertools/){target="_blank"}
-
-:::
 
 ::: {.column width="50%"}
 
@@ -234,7 +222,52 @@ R packages related to data harmonisation
 
 :::
 
+::: {.column width="50%"}
+
+:::{.fragment}
+
+R packages related to data harmonisation
+
+*  [`retroharmonize`](https://github.com/rOpenGov/retroharmonize/){target="_blank"} for harmonisation of survey (mainly categorical) data.
+*  [`Rmonize`](https://maelstrom-research.github.io/Rmonize-documentation/index.html){target="_blank"} for epidemiological data.
+*  [`psHarmonize`](https://github.com/NUDACC/psHarmonize){target="_blank"} for health and education data.
+
+:::
+
+:::
+
 ::::
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
+## Issues
+
+:::{.fragment}
+
+[`retroharmonize`](https://github.com/rOpenGov/retroharmonize/){target="_blank"} is data harmonisation of survey (mainly categorical) data. 
+
+:::
+
+:::{.fragment}
+
+[`Rmonize`](https://maelstrom-research.github.io/Rmonize-documentation/index.html){target="_blank"} documentation has too much jargon and difficult for me (and people with limited data science background) to understand. 
+
+:::
+
+:::{.fragment}
+
+[`psHarmonize`](https://github.com/NUDACC/psHarmonize){target="_blank"} variable harmonisation process is report is in an excel file. Works for variables with simple harmonisation process.
+
+![](images/psHarmonise.png){fig-alt="Harmonisation report from psHarmonise in an excel file." fig-align="center" width="100%"}
+
+Report in Microsoft Excel is hard to read if harmonisation process is complicated. 
+
+:::
 
 ::: footer
 
@@ -251,16 +284,17 @@ High risk of getting blame should things don't go well.
 
 ::: {.column width="50%"}
 
-![](images/pointing_finger.jpg){fig-alt="Businessman kneel on floor with fingers pointing to him." fig-align="center" width="87%"}
+![](images/246-joy.png){fig-alt="Comic from Monkeyuser.com showing the joy of watching other developers work on a bug no one wants to fix." fig-align="center" width="70%"}
 
-[Businessman kneel on floor with pointing finger to him by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464469-wind-up-businessman-end-of-energy-and-stop-working){target="_blank"}]{style="font-size: 80%;"}
+[[Joy](https://www.monkeyuser.com/2022/joy/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}]{style="font-size: 80%;"}
+
 :::
 
 ::: {.column width="50%"}
 
-![](images/246-joy.png){fig-alt="Comic from Monkeyuser.com showing the joy of watching other developers work on a bug no one wants to fix." fig-align="center" width="70%"}
+![](images/pointing_finger.jpg){fig-alt="Businessman kneel on floor with fingers pointing to him." fig-align="center" width="87%"}
 
-[[Joy](https://www.monkeyuser.com/2022/joy/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}]{style="font-size: 80%;"}
+[Businessman kneel on floor with pointing finger to him by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464469-wind-up-businessman-end-of-energy-and-stop-working){target="_blank"}]{style="font-size: 80%;"}
 
 :::
 
@@ -273,7 +307,7 @@ High risk of getting blame should things don't go well.
 
 :::
 
-## Harmonisation Template
+## Harmonisation Project Template
 
 <https://jauntyjjs.github.io/harmonisation/>
 
@@ -2020,7 +2054,7 @@ Create a "heatmap"using Microsoft PowerPoint.
 
 :::: {.columns}
 
-Harmonisation template on Github: <https://github.com/JauntyJJS/harmonisation/>{target="_blank"}
+Harmonisation project template on Github: <https://github.com/JauntyJJS/harmonisation/>{target="_blank"}
 
 ::: {.column width="50%"}
 
