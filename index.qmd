@@ -177,7 +177,7 @@ Here is a summary of my task for an international study.
 
 ## Why Retropective Data Harmonisation ?
 
-Collaborators may not have resources (time/funding) to match their data to your data dictionary and input template. 
+Collaborators may not have resources (time/funding) to match their data to the data dictionary and input template provided. 
 
 Data provided may have issues that needs relevant experience and may be hard to solve.
 
@@ -196,6 +196,39 @@ Data provided may have issues that needs relevant experience and may be hard to 
 ![](images/92-root-cause.png){fig-alt="Comic from Monkeyuser.com showing bugs can be hard to resolve." fig-align="center" width="70%"}
 
 [[Root Cause](https://www.monkeyuser.com/2018/root-cause/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}]{style="font-size: 80%;"}
+
+:::
+
+::::
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
+## Why Retropective Data Harmonisation ?
+
+Collaborator wants transparency on how the data is processed.
+
+High risk of getting blame should things don't go well.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](images/246-joy.png){fig-alt="Comic from Monkeyuser.com showing the joy of watching other developers work on a bug no one wants to fix." fig-align="center" width="70%"}
+
+[[Joy](https://www.monkeyuser.com/2022/joy/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}]{style="font-size: 80%;"}
+
+:::
+
+::: {.column width="50%"}
+
+![](images/pointing_finger.jpg){fig-alt="Businessman kneel on floor with fingers pointing to him." fig-align="center" width="87%"}
+
+[Businessman kneel on floor with pointing finger to him by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464469-wind-up-businessman-end-of-energy-and-stop-working){target="_blank"}]{style="font-size: 80%;"}
 
 :::
 
@@ -275,39 +308,6 @@ R packages related to data harmonisation
 
 :::
 
-## Issues
-
-Collaborator wants transparency on how the data is processed.
-
-High risk of getting blame should things don't go well.
-
-:::: {.columns}
-
-::: {.column width="50%"}
-
-![](images/246-joy.png){fig-alt="Comic from Monkeyuser.com showing the joy of watching other developers work on a bug no one wants to fix." fig-align="center" width="70%"}
-
-[[Joy](https://www.monkeyuser.com/2022/joy/){target="_blank"} from [MonkeyUser.com](https://www.monkeyuser.com/){target="_blank"}]{style="font-size: 80%;"}
-
-:::
-
-::: {.column width="50%"}
-
-![](images/pointing_finger.jpg){fig-alt="Businessman kneel on floor with fingers pointing to him." fig-align="center" width="87%"}
-
-[Businessman kneel on floor with pointing finger to him by [Amonrat Rungreangfangsai](https://www.vecteezy.com/vector-art/464469-wind-up-businessman-end-of-energy-and-stop-working){target="_blank"}]{style="font-size: 80%;"}
-
-:::
-
-::::
-
-::: footer
-
-[https://jauntyjjs.github.io/RMedicine2025_harmonisation
-`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
-
-:::
-
 ## Harmonisation Project Template
 
 <https://jauntyjjs.github.io/harmonisation/>
@@ -334,7 +334,7 @@ When reading files in batches or the same file but in a different version, is th
 ```{r}
 #| label: read data with warnings csv
 #| echo: true
-#| code-line-numbers: "|9"
+#| code-line-numbers: "|9|13"
 #| warning: true
 
 cohort_data_csv <- vroom::vroom(
@@ -1667,7 +1667,7 @@ To deal with this case, we have `smoke_history`, `smoke_current` and `smoke_past
 
 ## Overview Diagrams
 
-Each cohort can provide how many variables ? 
+How many variables can each cohort provide ? 
 
 How many variables can be harmonised ?
 
