@@ -754,7 +754,7 @@ cohort_csv_data |>
 
 ## Variable Mapping
 
-Let the reader know how the collaborator data `Smoke History` is going to be mapped.
+Let the reader know how the collaborator's data `Smoke History` is going to be mapped.
 
 ![](images/mapping_procedure.png){fig-alt="Documentation indicating how the collaborator's data Smoke History is going to be mapped or harmonised in Quarto code and output." fig-align="center" width="100%"}
 
