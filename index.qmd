@@ -297,6 +297,7 @@ R packages related to data harmonisation
 [`psHarmonize`](https://github.com/NUDACC/psHarmonize){target="_blank"} variable harmonisation process is reported in a Microsoft Excel file. Works for variables with simple harmonisation process.
 
 ![](images/psHarmonise.png){fig-alt="Harmonisation report from psHarmonise in an excel file." fig-align="center" width="100%"}
+
 [Image from Stephen et al. Patterns (N Y). 2024 Jun; 5(8):101003 doi: [10.1016/j.patter.2024.101003](https://10.1016/j.patter.2024.101003){target="_blank"}]{style="font-size: 80%;"}.
 
 :::
