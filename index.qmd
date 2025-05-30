@@ -1628,7 +1628,7 @@ purrr::walk(
 
 A similar method is done to create a summary report in word using [`flextable`](https://davidgohel.github.io/flextable/).
 
-![](images/summary_report.png){fig-alt="Preview of summary report." fig-align="center" width="85%"}
+![](images/summary_report.png){fig-alt="Preview of summary report." fig-align="center" width="80%"}
 
 ::: footer
 
