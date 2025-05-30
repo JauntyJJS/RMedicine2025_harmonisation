@@ -18,7 +18,7 @@ format:
     transition: fade
     background-transition: fade
     highlight-style: breeze
-    logo: images/qr.png
+    # logo: images/qr.png
     pointer:
       pointerSize: 24
       color: '#32cd32'
@@ -1639,7 +1639,7 @@ A similar method is done to create a summary report in word using [`flextable`](
 
 ## Data Variable Justfication Report (Explanation)
 
-Initially we have `smoke_history` with values 0 (Non-smoker), 1 (past-smoker), 2 (current smoker) and -1 (Unknown).
+Initially we have `smoke_history` with values 0 (Non-smoker), 1 (Current smoker), 2 (Past smoker) and -1 (Unknown).
 
 However, in the early stage of the study, some collaborators could only provide if the patient has a smoking history but could not specify if the patient is a current or past smoker.
 
