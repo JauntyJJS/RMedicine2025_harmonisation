@@ -298,7 +298,7 @@ R packages related to data harmonisation
 
 ![](images/psHarmonise.png){fig-alt="Harmonisation report from psHarmonise in an excel file." fig-align="center" width="100%"}
 
-[Image from Stephen et al. Patterns (N Y). 2024 Jun; 5(8):101003 doi: [10.1016/j.patter.2024.101003](https://10.1016/j.patter.2024.101003){target="_blank"}]{style="font-size: 80%;"}.
+[Image from Stephen et al. Patterns (N Y). 2024 Jun; 5(8):101003 doi: [10.1016/j.patter.2024.101003](https://doi.org/10.1016/j.patter.2024.101003){target="_blank"}]{style="font-size: 80%;"}.
 
 :::
 
@@ -1158,7 +1158,7 @@ demo_behave_data <- cohort_csv_data |>
 ```{r}
 #| label: penguin error no match in y
 #| echo: true
-#| code-line-numbers: "|3-5,12,19"
+#| code-line-numbers: "|3-4,11,18"
 #| warning: true
 #| error: true
 
@@ -1166,7 +1166,6 @@ three_penguins <- tibble::tribble(
   ~samp_id, ~species,    ~island,
   1,        "Adelie",    "Torgersen",
   2,        "Gentoo",    "Biscoe",
-  3,        "Chinstrap", "Dream"
 )
 
 weight_extra <- tibble::tribble(
