@@ -1119,14 +1119,14 @@ How can we merge them without issues of missing rows or additional columns ?
 
 ## Merging Harmonised Data
 
-`unmatched = "error"` in [`dplyr::left_join`](https://dplyr.tidyverse.org/reference/mutate-joins.html){target="_blank"} helps to avoid patients with no match.
+`unmatched = "error"` in [`dplyr::inner_join`](https://dplyr.tidyverse.org/reference/mutate-joins.html){target="_blank"} helps to avoid patients with no match.
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
 ```{r}
-#| label: demo behave data
+#| label: demo behave data no match in y
 #| code-line-numbers: "|4|7,11,15"
 #| echo: true
 
@@ -1134,15 +1134,15 @@ join_specification <- dplyr::join_by("cohort_unique_id")
 
 demo_behave_data <- cohort_csv_data |>
   dplyr::select(c("cohort_unique_id")) |>
-  dplyr::left_join(age_gender_data,
+  dplyr::inner_join(age_gender_data,
                    by = join_specification,
                    unmatched = "error",
                    relationship = "one-to-one") |>
-  dplyr::left_join(body_measurement_data,
+  dplyr::inner_join(body_measurement_data,
                    by = join_specification,
                    unmatched = "error",
                    relationship = "one-to-one") |>
-  dplyr::left_join(smoking_data,
+  dplyr::inner_join(smoking_data,
                    by = join_specification,
                    unmatched = "error",
                    relationship = "one-to-one") |>
@@ -1156,7 +1156,7 @@ demo_behave_data <- cohort_csv_data |>
 ::: {.column width="50%"}
 
 ```{r}
-#| label: penguin error
+#| label: penguin error no match in y
 #| echo: true
 #| code-line-numbers: "|3-5,12,19"
 #| warning: true
@@ -1177,7 +1177,7 @@ weight_extra <- tibble::tribble(
 )
 
 three_penguins |> 
-  dplyr::left_join(
+  dplyr::inner_join(
     y = weight_extra,
     by = dplyr::join_by("samp_id"),
     unmatched = "error"
@@ -1200,7 +1200,87 @@ three_penguins |>
 
 ## Merging Harmonised Data
 
-`relationship = "one-to-one"` in [`dplyr::left_join`](https://dplyr.tidyverse.org/reference/mutate-joins.html){target="_blank"} helps to avoid patients with multiple match.
+`unmatched = "error"` in [`dplyr::inner_join`](https://dplyr.tidyverse.org/reference/mutate-joins.html){target="_blank"} helps to avoid patients with no match.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: demo behave data no match in x
+#| code-line-numbers: "|7,11,15"
+#| echo: true
+
+join_specification <- dplyr::join_by("cohort_unique_id")
+
+demo_behave_data <- cohort_csv_data |>
+  dplyr::select(c("cohort_unique_id")) |>
+  dplyr::inner_join(age_gender_data,
+                   by = join_specification,
+                   unmatched = "error",
+                   relationship = "one-to-one") |>
+  dplyr::inner_join(body_measurement_data,
+                   by = join_specification,
+                   unmatched = "error",
+                   relationship = "one-to-one") |>
+  dplyr::inner_join(smoking_data,
+                   by = join_specification,
+                   unmatched = "error",
+                   relationship = "one-to-one") |>
+  dplyr::relocate(c("bsa_m2", "bmi"),
+                  .after = "sex")
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: penguin error no match in x
+#| echo: true
+#| code-line-numbers: "|4,10,11,18"
+#| warning: true
+#| error: true
+
+three_penguins <- tibble::tribble(
+  ~samp_id, ~species,    ~island,
+  1,        "Adelie",    "Torgersen",
+  2,        "Gentoo",    "Biscoe",
+  3,        "Chinstrap", "Dream"
+)
+
+weight_extra <- tibble::tribble(
+  ~samp_id,  ~body_mass_g,
+  1,         3220,
+  3,         4725
+)
+
+three_penguins |> 
+  dplyr::inner_join(
+    y = weight_extra,
+    by = dplyr::join_by("samp_id"),
+    unmatched = "error"
+ ) 
+
+```
+
+:::
+
+::::
+
+[Reference: <https://www.tidyverse.org/blog/2023/08/teach-tidyverse-23/#improved-and-expanded-_join-functionality>]{style="font-size: 80%;"}
+
+::: footer
+
+[https://jauntyjjs.github.io/RMedicine2025_harmonisation
+`r fontawesome::fa(name = "link", fill = "#666666")`](https://jauntyjjs.github.io/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "github", fill = "#000000")`](https://github.com/JauntyJJS/RMedicine2025_harmonisation){target="_blank"} [`r fontawesome::fa(name = "file-pdf", fill = "#b50b00")`](https://raw.githubusercontent.com/JauntyJJS/RMedicine2025_harmonisation/main/index.pdf){target="_blank"}
+
+:::
+
+## Merging Harmonised Data
+
+`relationship = "one-to-one"` in [`dplyr::inner_join`](https://dplyr.tidyverse.org/reference/mutate-joins.html){target="_blank"} helps to avoid patients with multiple match.
 
 :::: {.columns}
 
@@ -1215,15 +1295,15 @@ join_specification <- dplyr::join_by("cohort_unique_id")
 
 demo_behave_data <- cohort_csv_data |>
   dplyr::select(c("cohort_unique_id")) |>
-  dplyr::left_join(age_gender_data,
+  dplyr::inner_join(age_gender_data,
                    by = join_specification,
                    unmatched = "error",
                    relationship = "one-to-one") |>
-  dplyr::left_join(body_measurement_data,
+  dplyr::inner_join(body_measurement_data,
                    by = join_specification,
                    unmatched = "error",
                    relationship = "one-to-one") |>
-  dplyr::left_join(smoking_data,
+  dplyr::inner_join(smoking_data,
                    by = join_specification,
                    unmatched = "error",
                    relationship = "one-to-one") |>
@@ -1259,7 +1339,7 @@ weight_extra <- tibble::tribble(
 )
 
 three_penguins |> 
-  dplyr::left_join(
+  dplyr::inner_join(
     y = weight_extra,
     by = dplyr::join_by("samp_id"),
     relationship = "one-to-one"
@@ -1345,7 +1425,7 @@ weight_extra <- tibble::tribble(
 )
 
 three_penguins <- three_penguins |> 
-  dplyr::left_join(
+  dplyr::inner_join(
     y = weight_extra,
     by = dplyr::join_by("samp_id"),
     unmatched = "error",
