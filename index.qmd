@@ -1732,7 +1732,7 @@ However, in the early stage of the study, some collaborators could only provide 
 :::
 
 
-## Data Variable Justfication Report (Explanation)
+## Data Variable Justification Report (Explanation)
 
 To deal with this case, we have `smoke_history`, `smoke_current` and `smoke_past` to hold values 1 (Yes), 0 (No) and -1 (Unknown).
 
