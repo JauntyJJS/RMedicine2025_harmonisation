@@ -1716,7 +1716,7 @@ A similar method is done to create a summary report in word using [`flextable`](
 
 :::
 
-## Data Variable Justfication Report (Explanation)
+## Data Variable Justification Report (Explanation)
 
 Initially we have `smoke_history` with values 0 (Non-smoker), 1 (Current smoker), 2 (Past smoker) and -1 (Unknown).
 
